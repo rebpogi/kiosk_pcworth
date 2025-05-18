@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PC Worth - Pre-Build</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+    }
+
+    header {
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    header img.banner {
+      height: 120px;
+    }
+
+    nav {
+      background: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav img.logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .icons {
+      margin-left: auto;
+    }
+
+    .icons img {
+      height: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    aside {
+      width: 120px;
+      background: white;
+      padding: 10px;
+      box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    aside button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .product-card {
+      width: 150px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 0.9em;
+    }
+
+    .view-btn {
+      margin-top: 5px;
+      display: inline-block;
+      padding: 5px 10px;
+      background: pink;
+      border-radius: 4px;
+      font-size: 0.8em;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="banner.jpg" alt="AMD Ryzen Banner" class="banner">
+  </header>
+
+  <nav>
+    <img src="pcworth-logo.png" alt="PC Worth Logo" class="logo">
+    <h2>Pre-Build</h2>
+    <div class="icons">
+      <img src="home-icon.png" alt="Home">
+      <img src="cart-icon.png" alt="Cart">
+    </div>
+  </nav>
+
+  <div class="container">
+    <aside>
+      <button>GIGABYTE</button>
+      <button>ASUS</button>
+      <button>ASRock</button>
+      <button>MSI</button>
+      <button>GALLERY</button>
+    </aside>
+
+    <main>
+      <div class="product-card">
+        <img src="gigabyte-promo.jpg" alt="Gigabyte Promo">
+        <div class="price">₱10,495.00</div>
+        <div class="old-price">₱11,745.00</div>
+        <a href="#" class="view-btn">View PC Package</a>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
