@@ -1,0 +1,46 @@
+ body {
+      margin: 0;
+      padding: 0;
+      height: 1200px;
+      width: 99%;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      text-align: center;
+flex-direction: column;
+   display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .kiosklog {
+     margin-top: 20px;
+      height: 250px;
+
+    }
+
+
+
+    .menu-section {
+    
+    }
+    .menu-button {
+        
+      margin: 20px auto;
+      width: 250px;
+      height: 250px;
+      padding: 15px;
+      background: linear-gradient(to bottom, #4a90e2, #1a3d7c);
+      border-radius: 25px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .menu-button img {
+      width: 170px;
+    
+    }
+    a{
+      text-decoration: none;
+    }
