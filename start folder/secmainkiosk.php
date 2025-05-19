@@ -21,7 +21,7 @@
     </div>
     </a>
     <a href ="custombuild.html" >
-    <div class="menu-button">   <br>  <h2>Custom Build</h2>
+    <div class="menu-button">   <h2>Custom Build</h2>
       <img src="imt2.png" alt="Custom Build">
 
     </div>
@@ -30,7 +30,7 @@
 
     <a href ="partsout.html" >
 
-    <div class="menu-button"><br> <h2>Parts Out</h2>
+    <div class="menu-button"><h2>Parts Out</h2>
       <img class="tribt" src="imt3.png" alt="Parts Out">
       
     </div>

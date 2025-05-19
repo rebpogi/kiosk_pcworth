@@ -13,7 +13,7 @@ flex-direction: column;
       flex-direction: column;
     }
     .kiosklog {
-     margin-top: 50px;
+     margin-top: 20px;
       height: 250px;
 
     }
@@ -21,7 +21,7 @@ flex-direction: column;
 
 
     .menu-section {
-      margin-top: 20px;
+    
     }
     .menu-button {
         
