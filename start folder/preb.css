@@ -41,7 +41,11 @@
 
 
 
+.btl{
+height: 26px;
 
+
+}
 
 
     
@@ -72,6 +76,9 @@
       height: 30px;
       margin-left: 15px;
       cursor: pointer;
+      padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(243, 243, 243);
     }
 
     .container {
