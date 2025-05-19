@@ -23,18 +23,19 @@
     <img src="logo1.png" alt="PC Worth Logo" class="logo">
     <h2>| Pre-Build</h2>
     <div class="icons">
-      <img src="home-icon.png" alt="Home">
-      <img src="cart-icon.png" alt="Cart">
+      <img src="home.png" alt="Home">
+      <img src="cart.png" alt="Cart">
     </div>
   </nav>
 
   <div class="container">
     <aside>
-      <button>GIGABYTE</button>
-      <button>ASUS</button>
-      <button>ASRock</button>
-      <button>MSI</button>
-      <button>GALLERY</button>
+
+<button class="btl"><img class="btlimg" src="asusl.png"></button>
+<button class="btl"><img class="btlimg" src="msil.png"></button>
+<button class="btl"><img class="btlimg" src="asrl.png"></button>
+<button class="btl"><img class="btlimg" src="gigal.png"></button>
+<button class="btl"><img class="btlimg" src="pcwg.png"></button>
     </aside>
 
     <main>
