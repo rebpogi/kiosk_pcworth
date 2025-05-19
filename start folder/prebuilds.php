@@ -31,11 +31,11 @@
   <div class="container">
     <aside>
 
-<button class="btl"><img src="asusl.png"></button>
-<button class="btl"><img src="msil.png">/button>
-<button class="btl"><img src="asrl.png"></button>
-<button class="btl"><img src="gigal.png"></button>
-<button class="btl"><img src="pcwg.png"></button>
+<button class="btl"><img class="btlimg" src="asusl.png"></button>
+<button class="btl"><img class="btlimg" src="msil.png"></button>
+<button class="btl"><img class="btlimg" src="asrl.png"></button>
+<button class="btl"><img class="btlimg" src="gigal.png"></button>
+<button class="btl"><img class="btlimg" src="pcwg.png"></button>
     </aside>
 
     <main>
