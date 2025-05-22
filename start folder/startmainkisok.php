@@ -18,7 +18,7 @@
 
   <div>
   <button onclick="location.href='secmainkiosk.php'" class="start-button">Tap to Start </button>
-  
+
   </div>
   <div class="buttomheader">
   <img class="pbsbi" src="pbsbi.png" alt="kiosk bottom header">
