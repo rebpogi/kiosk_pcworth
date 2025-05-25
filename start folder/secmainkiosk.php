@@ -8,33 +8,36 @@
  
 </head>
 <body>
-  <div class="logo">
-<img class="kiosklog" src="headstart.png" alt="PC Worth Logo"> 
-  </div>
-<br>
-  <div class="menu-section">
-     <a href ="prebuilds.php" >
 
+  <div class="logo">
+
+<img class="kiosklog" src="resource/headstart.png" alt="PC Worth Logo"> 
+  </div>
+
+  <div class="menu-section">
+   <br>
+<button onclick="location.href='prebuilds.php'">
    <div class="menu-button">  <h2>Pre-Build</h2>
-      <img src="imt1.png" alt="Pre-Build"> 
+      <img src="resource/imt1.png" alt="Pre-Build"> 
     
     </div>
-    </a>
-    <a href ="custombuild.html" >
+</button>
+<br>
+<button onclick="location.href='custombuild.html'">
+
     <div class="menu-button">   <h2>Custom Build</h2>
-      <img src="imt2.png" alt="Custom Build">
+      <img src="resource/imt2.png" alt="Custom Build">
 
     </div>
-    </a>
-
-
-    <a href ="partsout.html" >
+</button>
+<br>
+<button onclick="location.href='partsout.html'">
 
     <div class="menu-button"><h2>Parts Out</h2>
-      <img class="tribt" src="imt3.png" alt="Parts Out">
+      <img class="tribt" src="resource/imt3.png" alt="Parts Out">
       
     </div>
-    </a>
+</button>
   </div>
   
 

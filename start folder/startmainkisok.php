@@ -10,9 +10,9 @@
 <body>
 // ETO YUNG PANG BACKGROUND //
 <div class="slideshow">
-  <div class="slide" style="background-image: url('img1.png');"></div>
-  <div class="slide" style="background-image: url('img2.png');"></div>
-  <div class="slide" style="background-image: url('img3.png');"></div>
+  <div class="slide" style="background-image: url('resource/img1.png');"></div>
+  <div class="slide" style="background-image: url('resource/img2.png');"></div>
+  <div class="slide" style="background-image: url('resource/img3.png');"></div>
 </div>
 
 
@@ -21,7 +21,7 @@
 
   </div>
   <div class="buttomheader">
-  <img class="pbsbi" src="pbsbi.png" alt="kiosk bottom header">
+  <img class="pbsbi" src="resource/pbsbi.png" alt="kiosk bottom header">
 
   
 
