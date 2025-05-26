@@ -31,7 +31,7 @@
     </div>
 </button>
 <br>
-<button onclick="location.href='partsout.html'">
+<button onclick="location.href='partsout.php'">
 
     <div class="menu-button"><h2>Parts Out</h2>
       <img class="tribt" src="resource/imt3.png" alt="Parts Out">
