@@ -71,7 +71,7 @@ margin: 30px;
       background: white;
       display: flex;
       align-items: center;
-     height: 50px;
+     height: 100px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -137,23 +137,31 @@ button
     main {
       background: rgb(188, 193, 201);
       width: 230px;
-   
-      flex: 1;
+   box-sizing: border-box;
+       flex: 1 1 calc(33.33% - 40px);
       padding: 20px;
     }
 
-    .product-card {
-      width: 230px;
-      background: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      margin: 20px;
-      display: inline-block;
-      vertical-align: top;
-      text-align: center;
-      margin-left: 100px;
-    }
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  flex: 1 1 calc(33.333% - 60px); /* 3 per row with margin compensation */
+  max-width: 300px;
+  min-width: 250px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+    
  .cardfont{
   font-size: 17px;
 }
@@ -183,5 +191,15 @@ button
       text-decoration: none;
       color: rgb(255, 255, 255);
     }
- 
+   @media (max-width: 900px) {
+  .product-card {
+    flex: 1 1 calc(50% - 40px); /* 2 per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 1 1 100%; /* 1 per row */
+  }
+}
     

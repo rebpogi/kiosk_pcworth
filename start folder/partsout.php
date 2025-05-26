@@ -1,54 +1,10 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="partso.css">
-
-  <script>
-    let activeSection = 'allitem'; // default
-
-    function setActiveSection(sectionId) {
-      activeSection = sectionId;
-      const items = document.querySelectorAll('.item');
-      items.forEach(item => {
-        item.style.display = (item.id === sectionId) ? 'block' : 'none';
-      });
-      filterContent(); // reapply search filter
-    }
-
-    function filterContent() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const activeitem = document.getElementById(activeSection);
-      if (!activeitem) return;
-      // product-card is the class for products
-      const products = activeitem.querySelectorAll('.product-card');
-
-      products.forEach(product => {
-        const text = product.textContent.toLowerCase();
-        product.style.display = text.includes(input) ? 'block' : 'none';
-      });
-    }
-
-    function searchitem() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const items = document.querySelectorAll('.item');
-      let found = false;
-
-      items.forEach(item => {
-        if (item.id.includes(input)) {
-          item.style.display = "block";
-          found = true;
-        } else {
-          item.style.display = "none";
-        }
-      });
-
-      if (!found) {
-        alert("No item matched your search.");
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="partso.css" />
+  <title>Parts Out</title>
 </head>
 <body>
 
@@ -77,16 +33,6 @@
 
   <div class="container">
     <aside>
-      <!-- Search input -->
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Search products..." 
-        oninput="filterContent()" 
-        style="width: 100%; margin-bottom: 10px;"
-      />
-
-      <!-- Section buttons -->
       <button onclick="setActiveSection('allitem')" class="btl">
         <img class="btlimg1" src="resource/allitem.png" alt="All Items">
       </button>
@@ -120,69 +66,143 @@
     </aside>
 
     <main>
-      <!-- Sections with products -->
-      <div class="item" id="allitem" style="display:none;">
-        <!-- Add all products here or logic to show all -->
-        <!-- Example -->
-        <div class="product-card">
-          <img src="resource/darkreaver.jpg" alt="Dark Reaver Build">
-          <h3 class="cardfont">Dark Reaver Build</h3>
-          <div class="price">₱175,690.00</div>
-          <div class="old-price">₱196,772.80</div>
-          <a href="#" class="view-btn">View PC Details</a>
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search products..." 
+        oninput="filterContent()" 
+        style="font-size:25px ; width: 80%; margin-bottom: 10px ; border-radius: 10px; margin-left:80px;"
+      />
+
+      <div class="item" id="allitem" style="display: none;">
+        <div class="product-grid"><!-- Filled by JS --></div>
+      </div>
+
+      <div class="item" id="gpu" style="display: none;">
+        <div class="product-grid">
+
+          <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Dark Reaver Build">
+            <h3 class="cardfont">GeForce RTX 3060 Ti 12GB</h3>
+            <div class="price">₱175,690.00</div>
+            <div class="old-price">₱196,772.80</div>
+            <a href="#" class="view-btn">View PC Details</a>
+          </div>
+
+          <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Dark Reaver Build">
+            <h3 class="cardfont">GeForce RTX 3050 6GB</h3>
+            <div class="price">₱175,690.00</div>
+            <div class="old-price">₱196,772.80</div>
+            <a href="#" class="view-btn">View PC Details</a>
+          </div>
+
         </div>
       </div>
 
-      <div class="item" id="gpu" style="display:none;">
-        <div class="product-card">
-          <img src="resource/darkreaver.jpg" alt="Dark Reaver Build">
-          <h3 class="cardfont">Dark Reaver Build</h3>
-          <div class="price">₱175,690.00</div>
-          <div class="old-price">₱196,772.80</div>
-          <a href="#" class="view-btn">View PC Details</a>
+      <div class="item" id="cpu" style="display: none;">
+        <div class="product-grid">
+
+          <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div>
+
         </div>
       </div>
 
-      <div class="item" id="cpu" style="display:none;">
-        <!-- CPU products here -->
-      </div>
+      <div class="item" id="mobo" style="display: none;">
+        <div class="product-grid">
+ <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">ASRock B550 Pro</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div>
 
-      <div class="item" id="mobo" style="display:none;">
-        <!-- Motherboard products here -->
-      </div>
+      </div></div>
 
-      <div class="item" id="ram" style="display:none;">
-        <!-- RAM products here -->
-      </div>
+      <div class="item" id="ram" style="display: none;">
+        <div class="product-grid">
 
-      <div class="item" id="storage" style="display:none;">
-        <!-- Storage products here -->
-      </div>
 
-      <div class="item" id="psu" style="display:none;">
-        <!-- PSU products here -->
-      </div>
+      </div></div>
+      <div class="item" id="storage" style="display: none;">
+        <div class="product-grid">
 
-      <div class="item" id="case" style="display:none;">
-        <!-- Case products here -->
-      </div>
 
-      <div class="item" id="cpucooler" style="display:none;">
-        <!-- CPU cooler products here -->
-      </div>
+      </div></div>
+      <div class="item" id="psu" style="display: none;">
+        <div class="product-grid">
 
-      <div class="item" id="fan" style="display:none;">
-        <!-- Fan products here -->
-      </div>
+
+      </div></div>
+      <div class="item" id="case" style="display: none;">
+        <div class="product-grid">
+
+        
+        </div></div>
+      <div class="item" id="cpucooler" style="display: none;">
+        <div class="product-grid">
+
+
+        </div></div>
+      <div class="item" id="fan" style="display: none;">
+        <div class="product-grid">
+
+
+        </div></div>
+
     </main>
   </div>
 
   <script>
-    // Show default section on load
+    let activeSection = 'allitem';
+
+    function setActiveSection(sectionId) {
+      activeSection = sectionId;
+      const items = document.querySelectorAll('.item');
+
+      items.forEach(item => {
+        item.style.display = (item.id === sectionId) ? 'block' : 'none';
+      });
+
+      if (sectionId === 'allitem') {
+        const allitemDiv = document.querySelector('#allitem .product-grid');
+        allitemDiv.innerHTML = '';
+
+        items.forEach(item => {
+          if (item.id !== 'allitem') {
+            const productCards = item.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+              allitemDiv.appendChild(card.cloneNode(true));
+            });
+          }
+        });
+      }
+
+      filterContent();
+    }
+
+    function filterContent() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const activeitem = document.getElementById(activeSection);
+      if (!activeitem) return;
+
+      const products = activeitem.querySelectorAll('.product-card');
+      products.forEach(product => {
+        const text = product.textContent.toLowerCase();
+        product.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+
     window.onload = () => {
       setActiveSection('allitem');
     };
   </script>
-
 </body>
 </html>
