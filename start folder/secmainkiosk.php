@@ -23,7 +23,7 @@
     </div>
 </button>
 <br>
-<button onclick="location.href='custombuild.html'">
+<button onclick="location.href='custombuilds.php'">
 
     <div class="menu-button">   <h2>Custom Build</h2>
       <img src="resource/imt2.png" alt="Custom Build">
