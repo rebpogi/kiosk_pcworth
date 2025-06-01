@@ -1,99 +1,207 @@
+ /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  body {
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding-bottom: 80px; /* for footer */
+  }
+  /* Header */
+  .main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 2px solid #ccc;
+    background: #fff;
+  }
+  .logo {
+    height: 50px;
+  }
+  .icons button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+    margin: 20px, auto;
+  }
+  /* Table */
+  .build-table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .build-table th, .build-table td {
+    padding: 12px 45px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+    font-size: 24px;
+  }
+  .build-table td img {
+    height: 130px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .add-button {
+    background-color: #1962a3;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #ccc;
+    transition: background-color 0.3s;
+    font-size: 30px;
+     margin-left: 20%;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      width: 1080px;
-      height: 1920px;
-      font-family: sans-serif;
-      background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .popup-tab {
-      width: 90%;
-      max-width: 600px;
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .step {
-      display: none;
-      text-align: center;
-      width: 100%;
-    }
-    .step.active {
-      display: block;
-    }
-    .choice-btn {
-      display: block;
-      margin: 10px 0;
-      background: #ddd;
-      border: none;
-      padding: 14px;
-      width: 100%;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #2ecc71;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .back-btn {
-      background: #e74c3c;
-      margin-top: 10px;
-    }
+.change-button {
+  background: none;
+  border: none;
+ margin-left: 100px;
 
-
-    .product-preview {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
 }
-
-.product-card {
-  display: flex;
-  align-items: center;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 12px;
-  width: 500px;
-  background-color: #f9f9f9;
-}
-
-.add-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 15px;
-}
-
-.product-img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 20px;
-  border-radius: 8px;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-}
+  
+  .add-button:hover {
+    background-color: #154a7b;
+  }
+  /* Centered Popup */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .popup-overlay.hidden {
+    display: none;
+  }
+  .popup-content {
+    background: #fff;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .popup-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1962a3;
+  }
+  .popup-close-btn {
+    background: none;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+  }
+  .popup-close-btn:hover {
+    color: #1962a3;
+  }
+  /* Question list */
+  .question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .question-item {
+    background: #f8f8f8;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid transparent;
+  }
+  .question-item:hover {
+    background-color: #e6f0ff;
+    border-color: #1962a3;
+  }
+  .question-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  }
+  .question-item strong {
+    font-size: 16px;
+    flex-grow: 1;
+    color: #222;
+  }
+  .question-item .price {
+    font-weight: bold;
+    color: #d10000;
+    min-width: 85px;
+    text-align: right;
+  }
+  /* Footer */
+  .checkout-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1962a3;
+    color: #fff;
+    padding: 35px 55px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.2);
+   
+  }
+  .subtotal {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .checkout-btn {
+    background-color:rgb(248, 42, 42);
+    color: #fff;
+    font-size: 50px;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .checkout-btn:hover {
+    background-color: #5c0000;
+  }
+  .add-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
