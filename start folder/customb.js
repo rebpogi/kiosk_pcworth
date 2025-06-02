@@ -22,11 +22,10 @@
       { name: "Kingston Fury 16GB DDR4", price: 4200, img: "resource/kingstonfury.png", ddr: "DDR4" },
     ],
     Storage: [
-  {name: "Samsung 970 EVO 1TB",price: 5500,img: "resource/samsung970.png", gen: "Gen3",socket: "M.2 NVMe"},
-  {name: "Crucial P3 2TB",price: 8500, img: "resource/crucialp3.png", gen: "Gen3", socket: "M.2 NVMe"},
-  {name: "WD Blue SN570 1TB",price: 4500,img: "resource/wdblue.png",gen: "Gen3 x4",socket: "M.2 NVMe"}
-],
-
+      {name: "Samsung 970 EVO 1TB",price: 5500,img: "resource/samsung970.png", gen: "Gen3",socket: "M.2 NVMe"},
+      {name: "Crucial P3 2TB",price: 8500, img: "resource/crucialp3.png", gen: "Gen3", socket: "M.2 NVMe"},
+      {name: "WD Blue SN570 1TB",price: 4500,img: "resource/wdblue.png",gen: "Gen3 x4",socket: "M.2 NVMe"}
+    ],
     Case: [
       { name: "NZXT H510", price: 4999, img: "resource/nzxt-h510.png", size: "ATX" },
       { name: "Cooler Master MasterBox Q300L", price: 3199, img: "resource/coolermaster-q300l.png", size: "Micro-ATX" },
@@ -38,12 +37,38 @@
       { name: "Seasonic Focus GX-850 850W", price: 9500, img: "resource/seasonic850w.png", wattage: 850 },
     ],
     CPUCooler: [
-      { name: "Cooler Master Hyper 212", price: 2500, img: "resource/cooler_hyper212.png", sockets: ["LGA1700", "AM4", "AM5"] },
-      { name: "Noctua NH-D15", price: 4500, img: "resource/cooler_noctua_nh_d15.png", sockets: ["LGA1700", "AM4", "AM5"] },
-      { name: "be quiet! Dark Rock Pro 4", price: 4300, img: "resource/cooler_darkrockpro4.png", sockets: ["LGA1700", "AM4"] },
-      { name: "DeepCool AK620", price: 3200, img: "resource/cooler_deepcool_ak620.png", sockets: ["LGA1700", "AM4", "AM5"] },
-      { name: "Arctic Freezer 34 eSports DUO", price: 2800, img: "resource/cooler_arctic34.png", sockets: ["LGA1700", "AM4", "AM5"] }
+      { name: "Cooler Master Hyper 212", price: 2500, img: "resource/cooler_hyper212.png", sockets: ["LGA1700", "AM4", "AM5"], size: "120mm" },
+      { name: "Noctua NH-D15", price: 4500, img: "resource/cooler_noctua_nh_d15.png", sockets: ["LGA1700", "AM4", "AM5"], size: "165mm" },
+      { name: "be quiet! Dark Rock Pro 4", price: 4300, img: "resource/cooler_darkrockpro4.png", sockets: ["LGA1700", "AM4"], size: "135mm" },
+      { name: "DeepCool AK620", price: 3200, img: "resource/cooler_deepcool_ak620.png", sockets: ["LGA1700", "AM4", "AM5"], size: "120mm" },
+      { name: "Arctic Freezer 34 eSports DUO", price: 2800, img: "resource/cooler_arctic34.png", sockets: ["LGA1700", "AM4", "AM5"], size: "120mm" }
     ],
+    Casefan: [
+      { name: "Cooler Master SickleFlow 120 ARGB", price: 599, img: "resource/sickleflow120.png", size: "120mm", type: "Single Fan" },
+      { name: "Noctua NF-A12x25 PWM", price: 1399, img: "resource/noctua-a12.png", size: "120mm", type: "Single Fan" },
+      { name: "ARCTIC F14 Silent", price: 499, img: "resource/arctic-f14.png", size: "140mm", type: "Single Fan" },
+      { name: "Cooler Master SickleFlow 120", price: 500, img: "resource/sickleflow.png", type: "Single Fan", size: "120mm" },
+      { name: "Lian Li UNI FAN SL120 3in1", price: 2500, img: "resource/unifan3in1.png", type: "3in1", size: "120mm" } 
+    ],
+
+    Monitor: [
+      { name: "AOC 24G2 24'' 144Hz IPS", price: 8999, img: "resource/aoc-24g2.png", size: "24\"", refreshRate: "144Hz" },
+      { name: "ASUS TUF VG27AQ 27'' 165Hz", price: 15999, img: "resource/asus-vg27aq.png", size: "27\"", refreshRate: "165Hz" },
+      { name: "Samsung Odyssey G5 32'' 144Hz", price: 17999, img: "resource/odyssey-g5.png", size: "32\"", refreshRate: "144Hz" },
+    ],
+    Mouse: [
+      { name: "Logitech G502 HERO", price: 2799, img: "resource/g502hero.png", type: "Wired" },
+      { name: "Razer DeathAdder V2", price: 2499, img: "resource/deathadderv2.png", type: "Wired" },
+      { name: "Logitech G Pro Wireless", price: 5999, img: "resource/gprowireless.png", type: "Wireless" },
+    ],
+
+    Keyboard: [
+      { name: "Redragon K552 Kumara", price: 1899, img: "resource/k552kumara.png", type: "Mechanical", switch: "Red" },
+      { name: "Razer BlackWidow V3", price: 4999, img: "resource/blackwidowv3.png", type: "Mechanical", switch: "Green" },
+      { name: "Logitech G213 Prodigy", price: 2999, img: "resource/g213.png", type: "Membrane", switch: "Membrane" },
+    ],
+
+
 
   };
 
@@ -153,53 +178,82 @@
       <td class="product-price">₱${product.price.toLocaleString()}</td>
     `;
 
+
+
+
+
+
+
+
+
+
+    
     // Add a "Change" button for replacing the component
 const changeBtn = document.createElement("button");
 changeBtn.title = "Change";
 changeBtn.classList.remove("add-button"); // remove old style
 changeBtn.classList.add("change-button"); // new style if needed
 
+// Style the button itself
+changeBtn.style.height = "40px";
+changeBtn.style.width = "40px";
+changeBtn.style.margin = "10px";
+changeBtn.style.padding = "0";
+changeBtn.style.border = "none";
+changeBtn.style.backgroundColor = "transparent";
+changeBtn.style.cursor = "pointer";
+changeBtn.style.display = "inline";
+changeBtn.style.alignItems = "left";
+changeBtn.style.justifyContent = "left";
+
+// Add and style the image
 const img = document.createElement("img");
 img.src = "resource/recycle.png";
 img.alt = "Change";
 img.style.width = "38px";
 img.style.height = "38px";
-img.style.margin = "10ox";
+img.style.margin = "0"; // Corrected the typo and adjusted layout
 
 changeBtn.appendChild(img);
+
+// Handle click
 changeBtn.onclick = () => openPopup(component);
 
+// Add to DOM
 const tdPrice = row.querySelector(".product-price");
 tdPrice.appendChild(changeBtn);
+
+
 // Add Remove button
 const removeBtn = document.createElement("button");
 removeBtn.title = "Remove";
 removeBtn.classList.add("remove-button");
 
-const removeImg = document.createElement("img");
-removeImg.src = "resource/delete.png";
-removeImg.alt = "Remove";
-removeImg.style.width = "38px";
-removeImg.style.height = "38px";
-removeImg.style.margin = "10px";
+removeBtn.textContent = "Remove";
 
-removeBtn.appendChild(removeImg);
+removeBtn.style.height = "40px";
+removeBtn.style.width = "100px";
+removeBtn.style.margin = "10px";
+removeBtn.style.color = "white";
+removeBtn.style.backgroundColor = "rgb(223, 14, 14)";
+removeBtn.style.fontSize = "20px";
+removeBtn.style.border = "none";
+removeBtn.style.cursor = "pointer";
+removeBtn.style.display = "inline";
+removeBtn.style.alignItems = "right";
+removeBtn.style.justifyContent = "right";
 removeBtn.onclick = () => {
   selectedComponents[component] = null;
   row.innerHTML = `
     <td><img src="resource/${component.toLowerCase()}.png" alt="${component} Icon" /></td>
     <td colspan="3"><button class="add-button" onclick="openPopup('${component}')">Add ${component}</button></td>
   `;
-
-  
-      updateSubtotal();
-  };
-
-
-  tdPrice.appendChild(removeBtn);
-
   updateSubtotal();
-}
+};
+
+tdPrice.appendChild(removeBtn);
+updateSubtotal();
+  }
 
 // CLEAR ALL FUNCTION
 function clearAllComponents() {
@@ -237,10 +291,20 @@ function getComponentDetails(component, product) {
     case "PSU":
       return `Wattage: ${product.wattage}`;
     case "CPUCooler":
-      return `Sockets: ${product.sockets}`;
+      return `Sockets: ${product.sockets.join(", ")}, Size: ${product.size}`;
+    case "Casefan":
+      return `Type: ${product.type}, Size: ${product.size}`;
+    case "Monitor":
+      return `Size: ${product.size}, Refresh Rate: ${product.refreshRate}`;
+    case "Mouse":
+      return `Type: ${product.type}`;
+    case "Keyboard":
+      return `Type: ${product.type}, Switch: ${product.switch}`;
     default:
       return "";
   }
+
+
     
   }
 
@@ -253,14 +317,56 @@ function getComponentDetails(component, product) {
   }
 
   // Dummy checkout action
-  function checkout() {
-    const selectedCount = Object.values(selectedComponents).filter(c => c !== null).length;
-    if (selectedCount === 0) {
-      alert("Please select at least one component before checkout.");
-      return;
-    }
-    alert("Checkout successful! Total: " + document.querySelector(".subtotal").textContent);
+ function checkout() {
+  const selectedItems = Object.entries(selectedComponents)
+    .filter(([key, val]) => val !== null)
+    .map(([key, val]) => ({
+      component: key,
+      name: val.name,
+      price: val.price
+    }));
+
+  if (selectedItems.length === 0) {
+    alert("Please select at least one component before checkout.");
+    return;
   }
+
+  const subtotal = selectedItems.reduce((sum, item) => sum + item.price, 0);
+
+  // ✅ Option 1: Save to localStorage (frontend-only solution)
+  localStorage.setItem('cart', JSON.stringify({
+    items: selectedItems,
+    subtotal: subtotal
+  }));
+
+  // ✅ Optional: Send to backend (requires server-side endpoint)
+  
+  fetch('/add-to-cart', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      items: selectedItems,
+      subtotal: subtotal
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert("Items successfully sent to cart!");
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert("Failed to send items to cart.");
+  });
+  
+
+  // ✅ User feedback
+  alert("Items sent to cart!\n" +
+    selectedItems.map(i => `${i.component}: ${i.name}`).join("\n") +
+    `\nSubtotal: ₱${subtotal.toLocaleString()}`);
+}
+
 
   // Close popup if clicked outside content
   document.getElementById("componentPopup").addEventListener("click", (e) => {

@@ -9,9 +9,19 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="main-header">
-    <img src="resource/logo1.png" alt="PC Worth Logo" class="logo" />
-    <h1>Custom Build</h1>
+ <header>
+    <div class="slideshow">
+      <div class="slide"><img src="resource/frame1.png"></div>
+      <div class="slide"><img src="resource/frame2.png"></div>
+      <div class="slide"><img src="resource/frame3.png"></div>
+      <div class="slide"><img src="resource/frame4.png"></div>
+      <div class="slide"><img src="resource/frame5.png"></div>
+    </div>
+  </header>
+
+  <nav>
+    <img src="resource/logo1.png" class="logo" alt="Logo">
+    <h2>| Custom Build</h2>
     <div class="icons">
       <button onclick="location.href='secmainkiosk.php'">
         <img src="resource/home.png" alt="Home">
@@ -20,8 +30,7 @@
         <img src="resource/cart.png" alt="Cart">
       </button>
     </div>
-    </div>
-  </header>
+  </nav>
 
   <!-- Table -->
   <table class="build-table" aria-label="PC Build Components Table">
@@ -72,11 +81,6 @@
        <tr data-component="Casefan"> 
         <td><img src="resource/Casefan.png" alt="Casefan" /></td> 
         <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Casefan')">+ ADD COMPONENT</button></td>
-      </tr>
-      <tr data-component="Casefan"> 
-        <td><img src="resource/Casefan.png" alt="Casefan" /></td> 
-        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Casefan')">+ ADD COMPONENT</button></td>
-      </tr>
       <tr data-component="Monitor"> 
         <td><img src="resource/Monitor.png" alt="Monitor" /></td> 
         <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Monitor')">+ ADD COMPONENT</button></td>
@@ -92,7 +96,7 @@
 
 
       
-      <button onclick="clearAllComponents()">Clear All</button>
+      <button class="clearall" onclick="clearAllComponents()">Clear All</button>
     </tbody>
     
   </table>
