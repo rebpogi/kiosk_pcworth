@@ -96,13 +96,7 @@
     </aside>
 
     <main>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search products..."
-        oninput="filterContent()"
-        style="font-size: 25px; width: 80%; margin-bottom: 10px; border-radius: 10px; margin-left: 80px;"
-      />
+     
 
       <!-- Brand sections -->
       <div class="brand" id="allbrand" style="display: none;">

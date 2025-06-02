@@ -144,10 +144,13 @@ button
 
 
 .product-grid {
+ 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  max-height: 1300px; /* adjust this value as needed */
+  overflow-y: auto;
 }
 
 .product-card {

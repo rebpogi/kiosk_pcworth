@@ -63,16 +63,19 @@
       <button onclick="setActiveSection('fan')" class="btl">
         <img class="btlimg3" src="resource/fan.png" alt="Fan">
       </button>
+            <button onclick="setActiveSection('monitor')" class="btl">
+        <img class="btlimg3" src="resource/Monitor.png" alt="Fan">
+      </button>
+            <button onclick="setActiveSection('mouse')" class="btl">
+        <img class="btlimg3" src="resource/Mouse.png" alt="Fan">
+      </button>
+            <button onclick="setActiveSection('keyboard')" class="btl">
+        <img class="btlimg3" src="resource/Keyboard.png" alt="Fan">
+      </button>
     </aside>
 
     <main>
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Search products..." 
-        oninput="filterContent()" 
-        style="font-size:25px ; width: 80%; margin-bottom: 10px ; border-radius: 10px; margin-left:80px;"
-      />
+     
 
       <div class="item" id="allitem" style="display: none;">
         <div class="product-grid"><!-- Filled by JS --></div>
@@ -110,6 +113,51 @@
             <div class="old-price">₱17,772.80</div>
             <a href="#" class="view-btn">View Item Details</a>
           </div>
+
+ <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div> <div class="product-card">
+            <img src="resource/darkreaver.jpg" alt="Intel i7 9700F">
+            <h3 class="cardfont">Intel i7 9700F</h3>
+            <div class="price">₱15,690.00</div>
+            <div class="old-price">₱17,772.80</div>
+            <a href="#" class="view-btn">View Item Details</a>
+          </div>
+
 
         </div>
       </div>
@@ -156,7 +204,21 @@
 
 
         </div></div>
+      <div class="item" id="monitor" style="display: none;">
+        <div class="product-grid">
 
+
+        </div></div>
+              <div class="item" id="mouse" style="display: none;">
+        <div class="product-grid">
+
+
+        </div></div>
+              <div class="item" id="Keyboard" style="display: none;">
+        <div class="product-grid">
+
+
+        </div></div>
     </main>
   </div>
 

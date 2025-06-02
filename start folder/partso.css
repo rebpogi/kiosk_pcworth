@@ -150,7 +150,10 @@ button
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  max-height: 1300px; /* adjust this value as needed */
+  overflow-y: auto;
 }
+
 
 .product-card {
   flex: 1 1 calc(33.333% - 60px); /* 3 per row with margin compensation */
