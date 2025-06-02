@@ -57,7 +57,11 @@
     Case: null,
     PSU: null,
     CPUCooler: null,
-    
+    Casefan: null,
+    Monitor: null,
+    Mouse: null,
+    Keyboard: null,
+
   };
 
   let currentComponent = null;
@@ -214,7 +218,7 @@ function clearAllComponents() {
   }
   updateSubtotal();
 }
-
+// get component details//
 
 function getComponentDetails(component, product) {
   switch (component) {
@@ -264,41 +268,4 @@ function getComponentDetails(component, product) {
       closePopup();
     }
   });
-//custom component //
-function openAllItemsPopup() {
-  const popup = document.getElementById("popup");
-  const popupTitle = document.getElementById("popupTitle");
-  const popupItems = document.getElementById("popupItems");
-
-  popupTitle.textContent = "Select Any Component";
-  popupItems.innerHTML = "";
-
-  // Display all items from all categories
-  for (const category in components) {
-    components[category].forEach((product, index) => {
-      const itemDiv = document.createElement("div");
-      itemDiv.className = "popup-item";
-      itemDiv.innerHTML = `
-        <img src="${product.img}" alt="${product.name}">
-        <div>
-          <strong>${product.name}</strong><br>
-          Price: ₱${product.price.toLocaleString()}<br>
-          <small>${getComponentDetails(category, product)}</small>
-        </div>
-        <button onclick="selectCustomComponent('${category}', ${index})">Select</button>
-      `;
-      popupItems.appendChild(itemDiv);
-    });
-  }
-
-  popup.style.display = "block";
-}
-function selectCustomComponent(component, index) {
-  const product = components[component][index];
-  selectedComponents[component] = product;
-
-  updateTableRow(component, product);  // make sure this creates the row if it doesn't exist
-  updateSubtotal();
-  closePopup();
-}
 

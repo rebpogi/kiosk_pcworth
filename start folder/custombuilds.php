@@ -69,10 +69,29 @@
         <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('CPUCooler')">+ ADD COMPONENT</button></td>
       </tr>
 
-       <tr data-component="CustomComponent"> 
-        <td><img src="resource/CustomComponent.png" alt="CustomComponent" /></td> 
-        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('CustomComponent')">+ ADD CUSTOM COMPONENT</button></td>
+       <tr data-component="Casefan"> 
+        <td><img src="resource/Casefan.png" alt="Casefan" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Casefan')">+ ADD COMPONENT</button></td>
       </tr>
+      <tr data-component="Casefan"> 
+        <td><img src="resource/Casefan.png" alt="Casefan" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Casefan')">+ ADD COMPONENT</button></td>
+      </tr>
+      <tr data-component="Monitor"> 
+        <td><img src="resource/Monitor.png" alt="Monitor" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Monitor')">+ ADD COMPONENT</button></td>
+      </tr>
+      <tr data-component="Mouse"> 
+        <td><img src="resource/Mouse.png" alt="Mouse" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Mouse')">+ ADD COMPONENT</button></td>
+      </tr>
+      <tr data-component="Keyboard"> 
+        <td><img src="resource/Keyboard.png" alt="Keyboard" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Keyboard')">+ ADD COMPONENT</button></td>
+      </tr>
+
+
+      
       <button onclick="clearAllComponents()">Clear All</button>
     </tbody>
     
