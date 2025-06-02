@@ -57,6 +57,7 @@
     Case: null,
     PSU: null,
     CPUCooler: null,
+    
   };
 
   let currentComponent = null;
@@ -166,8 +167,55 @@ changeBtn.onclick = () => openPopup(component);
 
 const tdPrice = row.querySelector(".product-price");
 tdPrice.appendChild(changeBtn);
-    updateSubtotal();
+// Add Remove button
+const removeBtn = document.createElement("button");
+removeBtn.title = "Remove";
+removeBtn.classList.add("remove-button");
+
+const removeImg = document.createElement("img");
+removeImg.src = "resource/delete.png";
+removeImg.alt = "Remove";
+removeImg.style.width = "38px";
+removeImg.style.height = "38px";
+removeImg.style.margin = "10px";
+
+removeBtn.appendChild(removeImg);
+removeBtn.onclick = () => {
+  selectedComponents[component] = null;
+  row.innerHTML = `
+    <td><img src="resource/${component.toLowerCase()}.png" alt="${component} Icon" /></td>
+    <td colspan="3"><button class="add-button" onclick="openPopup('${component}')">Add ${component}</button></td>
+  `;
+
+  
+      updateSubtotal();
+  };
+
+
+  tdPrice.appendChild(removeBtn);
+
+  updateSubtotal();
+}
+
+// CLEAR ALL FUNCTION
+function clearAllComponents() {
+  for (const key in selectedComponents) {
+    selectedComponents[key] = null;
+
+    const row = document.querySelector(`tr[data-component="${key}"]`);
+    if (row) {
+      row.innerHTML = `
+        <td><img src="resource/${key.toLowerCase()}.png" alt="${key} Icon" /></td>
+        <td colspan="3">
+          <button class="add-button" onclick="openPopup('${key}')">Add ${key}</button>
+        </td>
+      `;
+    }
   }
+  updateSubtotal();
+}
+
+
 function getComponentDetails(component, product) {
   switch (component) {
     case "CPU":

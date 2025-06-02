@@ -25,75 +25,66 @@
 
   <!-- Table -->
   <table class="build-table" aria-label="PC Build Components Table">
+  
     <thead>
       <tr>
         <th scope="col">Component</th>
         <th scope="col">Product</th>
         <th scope="col">Details</th>
         <th scope="col">Price</th>
+        
       </tr>
     </thead>
     <tbody id="buildTableBody">
       <tr data-component="CPU">
         <td><img src="resource/cpu.png" alt="CPU Icon" /> </td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('CPU')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"> <button class="add-button" onclick="openPopup('CPU')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="Motherboard">
         <td><img src="resource/mobo.png" alt="Motherboard Icon" /></td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('Motherboard')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Motherboard')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="GPU">
         <td><img src="resource/gpu.png" alt="GPU Icon" /></td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('GPU')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('GPU')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="RAM">
         <td><img src="resource/ram.png" alt="RAM Icon" /> </td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('RAM')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('RAM')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="Storage">
         <td><img src="resource/storage.png" alt="Storage Icon" /> </td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('Storage')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Storage')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="Case">
         <td><img src="resource/case.png" alt="Case Icon" /> </td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('Case')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('Case')">+ ADD COMPONENT</button></td>
       </tr>
       <tr data-component="PSU">
         <td><img src="resource/psu.png" alt="PSU Icon" /> </td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('PSU')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('PSU')">+ ADD COMPONENT</button></td>
       </tr>
        <tr data-component="CPUCooler">
         <td><img src="resource/cpu cooler.png" alt="CPU Cooler Icon" /></td>
-        <td class="product-name" colspan="3">
-          <button class="add-button" onclick="openPopup('CPUCooler')">+ ADD COMPONENT</button>
-        </td>
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('CPUCooler')">+ ADD COMPONENT</button></td>
       </tr>
 
-<tr data-component="CustomComponent"> 
-  <td><img src="resource/CustomComponent.png" alt="CustomComponent" /></td> 
-  <td class="product-name" colspan="3">
-    <button class="add-button" onclick="openPopup('CustomComponent')">+ ADD CUSTOM COMPONENT</button>
-  </td>
-</tr>
-      
+       <tr data-component="CustomComponent"> 
+        <td><img src="resource/CustomComponent.png" alt="CustomComponent" /></td> 
+        <td class="product-name" colspan="3"><button class="add-button" onclick="openPopup('CustomComponent')">+ ADD CUSTOM COMPONENT</button></td>
+      </tr>
+      <button onclick="clearAllComponents()">Clear All</button>
     </tbody>
     
   </table>
 
+ <div id="popup" style="display:none;" onclick="if(event.target.id==='popup'){closePopup();}">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <div id="popupItems"></div>
+    <button onclick="document.getElementById('popup').style.display='none'">Close</button>
+  </div>
+</div>
 
 
   <!-- Checkout footer -->
