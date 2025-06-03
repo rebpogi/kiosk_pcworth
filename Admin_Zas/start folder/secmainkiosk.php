@@ -23,20 +23,18 @@
     </div>
 </button>
 <br>
-<button onclick="location.href='custombuilds.php'">
-
-    <div class="menu-button">   <h2>Custom Build</h2>
-      <img src="resource/imt2.png" alt="Custom Build">
-
-    </div>
+<button onclick="location.href='kioskdb/CBSelection.php'">
+  <div class="menu-button">
+    <h2>Custom Build</h2>
+    <img src="resource/imt2.png" alt="Custom Build">
+  </div>
 </button>
 <br>
-<button onclick="location.href='partsout.php'">
-
-    <div class="menu-button"><h2>Parts Out</h2>
-      <img class="tribt" src="resource/imt3.png" alt="Parts Out">
-      
-    </div>
+<button onclick="location.href='kioskdb/partsout.php'">
+  <div class="menu-button">
+    <h2>Parts Out</h2>
+    <img src="resource/imt3.png" alt="Parts Out">
+  </div>
 </button>
   </div>
   
