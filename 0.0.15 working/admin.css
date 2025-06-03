@@ -1,0 +1,494 @@
+
+/* .show para ipakita yung sidebar na pinili */
+/* .active para ipakit kung anong sidebar binili ng user */
+/* Padding = top, right, bottom, right */
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      padding: 48px 0 0;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    }
+
+
+    .sidebar .nav-link {
+      font-weight: 500;
+      color: #333;
+    }
+/* Dropdown Button style - Inventory */
+.Dropdown-Btn {
+  padding: 10px 20px 10px 10px;
+  background-color: #7ec3ff;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;  
+}
+
+/* Active state for Inventory main button */
+.Dropdown-Btn.active {
+  background-color: #98deff;
+}
+
+/* Dropdown container for Inventory */
+.Dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Show Inventory dropdown content */
+.Dropdown-content.show {
+  max-height: 300px;
+}
+
+/* Account Button style */
+.Account-Btn {
+  padding: 10px 20px 10px 10px;
+  background-color: #7ec3ff;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-top: 10px; /* optional spacing between buttons */
+}
+
+/* Active state for Account main button */
+.Account-Btn.active {
+  background-color: #98deff;
+}
+
+/* Dropdown container for Account */
+.Account-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: #f9f9f9;
+  padding-left: 20px;
+}
+
+/* Show Account dropdown content */
+.Account-content.show {
+  max-height: 300px;
+}
+
+ 
+/* style ng mga sub category  (a) yung gamitin pang style ng mga sub category*/
+    .Account-content a, 
+    .Dropdown-content a {
+      color: #000;
+      padding: 10px 0px 10px 20px;
+      border-radius: 8px;
+      padding: 20px;
+      display: block;
+      text-decoration: none;
+    }
+
+    /*Animation ng mga button under inventory*/
+@keyframes clickPulse {
+  0% {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  100% {
+    background-color: #007bff;
+    transform: scale(1);
+  }
+}
+
+.clicked-animate {
+  animation: clickPulse 0.4s ease;
+  border-radius: 5px;
+}
+
+/*=========== FORMS INSIDE EACH BUTTON*/
+
+/* Wrapper for side-by-side forms */
+.form-wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Form styling  */
+form {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+/* Label style ng mga forms I2 NASA TAAS NG MGA FORM */
+form p {
+  font-weight: bold;
+  margin: 16px 0 6px; /* Top space from previous input, bottom space from the input below */
+}
+
+/* texarea styles, eto yung pag typan mo */
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #000000;
+}
+
+/*
+.input1 {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 8px;
+}
+*/
+
+/* Focus effect */
+input[type="text"]:focus {
+  background-color: rgb(218, 246, 255);
+}
+
+input[type="number"]:focus {
+  background-color: rgb(218, 246, 255);
+}
+
+input[type="textarea"]:focus {
+  background-color: rgb(218, 246, 255);
+}
+
+/* Stack forms on smaller screens */
+@media (max-width: 768px) {
+  .form-wrapper {
+    flex-direction: column;
+  }
+}
+
+.input-group {
+  display: flex;               /* Arrange items in a row */
+  gap: 20px;                   /* Space between the two input fields */
+}
+
+.input-field {
+  flex: 1;                     /* Each input field equal width */
+}
+
+
+/* style ng mga input fields ng description at specification*/
+.style_box {
+  width: 100%;
+  height: 150px;
+  padding: 12px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  resize: vertical;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.style_box:focus {
+  background-color: rgb(218, 246, 255);
+}
+
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+select:focus {
+  background-color: rgb(218, 246, 255);
+  outline: none;
+}
+
+
+
+/* checkbox style */
+input[type="checkbox"] {
+  transform: scale(1.5);
+  width: 25px;
+  height: 25px;
+  margin-right: 10px; 
+  vertical-align: middle;
+}
+
+
+/*Save product button*/
+.new-Product-save{
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;    
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+/*UPDATE product button*/
+.new-Product-update{
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;    
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.prompt-overlay {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dim background */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.prompt-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.prompt-box button {
+  margin-top: 10px;
+  padding: 8px 16px;
+}
+
+/* Hide yung default na choose immage */
+  #immage {
+    display: none; 
+  }
+    #new_immage {
+    display: none; 
+  }
+/*Style for the immgae preview, pag nag select mag output agad para makita ni user*/
+#imagePreview {
+  width: 400px;
+  height: 400px;
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  object-fit: cover;
+}
+
+#UpdateimagePreview {
+  width: 400px;
+  height: 400px;
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  object-fit: cover;
+}
+
+/*Buttons ng choose immage for new product*/
+  .custom-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .custom-upload:hover {
+    background-color: #0056b3;
+  }
+
+
+/*Buttons update product*/
+.custom-update-immage {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.custom-update-immage:hover {
+  background-color: #0056b3;
+}
+
+  /* SEARCH BAR AND SEARCH TABLES HERE*/
+ /* Search Input */
+
+ .search-container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#search,
+#search-btn {
+  font-size: 16px;
+  height: 42px; /* Set consistent height */
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+#search {
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 5px;
+}
+
+#search-btn {
+  padding: 0 20px;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background-color: #45a049;
+}
+
+
+/* Results Table */
+#default-table,
+#result {
+    margin-top: 20px;
+}
+
+/* Main table for the data */
+#result table,
+#default-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* Table cells */
+#result th, #result td,
+#default-table th, #default-table td {
+    padding: 12px;
+    text-align: left;
+    border: 3px solid #000000;
+}
+
+/* Table header */
+#result th,
+#default-table th {
+    background-color: #3ea8ff;
+    font-weight: bold;
+}
+
+/* Even numbered rows */
+#result tr:nth-child(even),
+#default-table tr:nth-child(even) {
+    background-color: #b9e8ff;
+}
+
+/* Highlight on hover */
+#result tr:hover,
+#default-table tr:hover {
+    background-color: #d775ed;
+}
+
+
+
+/* Modal FOR SAVE BUTTON ON INSERT NEW PRODUCT */
+.modalNewProduct {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  border: 2px solid #000000;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Close button */
+.modalNewProduct-close {
+  cursor: pointer;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Message text for new product */
+.modalNewProduct-message {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #222222;
+  text-align: center;
+}
+
+/*BUNDLES SECTION */
+
+.bundle-rectangle {
+    width: 150px;
+    height: 250px; /* Portrait rectangle */
+    background-color: #d3d3d3; /* Gray background */
+    border: 3px dashed #666666; /* Dashed border */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #333333;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bundle-rectangle:hover {
+    background-color: #c0c0c0;
+    border-color: #444444;
+  }
+
+  .plus-sign {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #444444;
+  }
+
+  .bundle-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444444;
+    text-align: center; 
+}
