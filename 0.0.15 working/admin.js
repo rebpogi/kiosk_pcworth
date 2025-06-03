@@ -268,37 +268,51 @@ document.body.addEventListener("submit", function (e) {
 });
 
 
-// NEW PRODUCT FORM SUBMIT WITH MODAL
-document.getElementById('productForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  try {
-    const response = await fetch('test_insert.php', {
-      method: 'POST',
-      body: formData
-    });
+// // NEW PRODUCT FORM SUBMIT WITH MODAL
+// document.addEventListener("DOMContentLoaded", () => {
+//   const productForm = document.getElementById('productForm');
+//   if (productForm) {
+//     productForm.addEventListener('submit', async function (e) {
+//       e.preventDefault();
 
-    const result = await response.text();
-    document.getElementById('modalMessage').textContent = result;
-    console.log("Server response:", result);
+//       const formData = new FormData(this);
 
-    document.getElementById('popupModal').style.display = 'block';
+//       try {
+//         const response = await fetch('test_insert.php', {
+//           method: 'POST',
+//           body: formData
+//         });
 
-    // Close modal
-    document.getElementById('closeModal').addEventListener('click', function () {
-      document.getElementById('popupModal').style.display = 'none';
-    });
+//         const result = await response.text();
+//         document.getElementById('modalMessage').textContent = result;
+//         console.log("Server response:", result);
 
-    // Reset on success
-    if (result.toLowerCase().includes('success')) {
-      this.reset();
-      document.getElementById('imagePreview').src = '';
-    }
-  } catch (error) {
-    document.getElementById('modalMessage').textContent = 'Something went wrong!';
-    document.getElementById('popupModal').style.display = 'block';
-  }
-});
+//         const popupModal = document.getElementById('popupModal');
+//         popupModal.style.display = 'block';
+
+//         // Remove existing event listeners for closeModal before adding a new one
+//         const closeModalBtn = document.getElementById('closeModal');
+//         closeModalBtn.replaceWith(closeModalBtn.cloneNode(true)); // this removes old listeners
+//         const newCloseModalBtn = document.getElementById('closeModal');
+
+//         newCloseModalBtn.addEventListener('click', function () {
+//           popupModal.style.display = 'none';
+//         });
+
+//         // Reset form and image preview on success
+//         if (result.toLowerCase().includes('success')) {
+//           this.reset();
+//           const imagePreview = document.getElementById('imagePreview');
+//           if (imagePreview) imagePreview.src = '';
+//         }
+//       } catch (error) {
+//         document.getElementById('modalMessage').textContent = 'Something went wrong!';
+//         document.getElementById('popupModal').style.display = 'block';
+//       }
+//     });
+//   }
+// });
+
 
 
 // IMAGE PREVIEW FOR NEW PRODUCT

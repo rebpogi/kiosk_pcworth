@@ -87,8 +87,17 @@ if (isset($_GET['id'])) {
 
                     <div class="input-field">
                         <p>Manufacturer</p>
-                        <input id="manufacturer" name="manufacturer" type="text" placeholder="manufacturer"
-                               value="<?= htmlspecialchars($product['manufacturer']) ?>">
+                              <select id="manufacturer" name="manufacturer" required>
+                                <option value="">Select Manufacturer</option>
+                                <option value="Nvidia" <?= ($product['manufacturer'] === 'Nvidia') ? 'selected' : '' ?>>Nvidia</option>
+                                <option value="Intel" <?= ($product['manufacturer'] === 'Intel') ? 'selected' : '' ?>>Intel</option>
+                                <option value="ASrock" <?= ($product['manufacturer'] === 'ASrock') ? 'selected' : '' ?>>ASrock</option>
+                                <option value="Apple" <?= ($product['manufacturer'] === 'Apple') ? 'selected' : '' ?>>Apple</option>
+                                <option value="Gigabyte" <?= ($product['manufacturer'] === 'Gigabyte') ? 'selected' : '' ?>>Gigabyte</option>
+                                <option value="HP" <?= ($product['manufacturer'] === 'HP') ? 'selected' : '' ?>>HP</option>
+                                <option value="AMD" <?= ($product['manufacturer'] === 'AMD') ? 'selected' : '' ?>>AMD</option>
+                                <option value="ASUS" <?= ($product['manufacturer'] === 'ASUS') ? 'selected' : '' ?>>ASUS</option>
+                              </select>
                     </div>
                 </div>
 

@@ -80,7 +80,13 @@
   max-height: 300px;
 }
 
- 
+ .error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 3px;
+  height: 16px; /* reserve space */
+}
+
 /* style ng mga sub category  (a) yung gamitin pang style ng mga sub category*/
     .Account-content a, 
     .Dropdown-content a {

@@ -75,11 +75,13 @@
                 <div class="input-field">
                     <p>Product Display Name</p>
                     <input id="product_display_name" name="product_display_name" type="text" placeholder="Display_name" required>
+                    <div class="error-message" id="error_product_display_name"></div>
                 </div>
             
                 <div class="input-field">
                   <p>Price</p>
                   <input id="price" name="price" type="number" step="0.01" placeholder="₱00.00" required>
+                   <div class="error-message" id="error_price"></div>
                 </div>
               </div>
 
@@ -104,9 +106,20 @@
 
                     </select>
                 </div>
+
                 <div class="input-field" required>
                     <p>Manufacturer</p>
-                    <input id="manufacturer" name="manufacturer" type="text" placeholder="manufacturer">
+                    <select id="manufacturer" name="manufacturer" required placeholder="manufacturer">
+                      <option value="">Select Manufacturer</option>
+                      <option value="Nvidia">Nvidia</option>
+                      <option value="Intel">Intel</option>
+                      <option value="ASrock">ASrock</option>
+                      <option value="Apple">Apple</option>
+                      <option value="Gigabyte">Gigabyte</option>
+                      <option value="HP">HP</option>
+                      <option value="AMD">AMD</option>
+                      <option value="ASUS">ASUS</option>
+                    </select>
                 </div>
             </div>
 
@@ -187,11 +200,13 @@
                 <div class="input-field">
                   <p>UID / Tracking number</p>
                     <input type="text" placeholder="###" id="UID" name="UID" required >
+                     <div class="error-message" id="error_UID"></div>
                 </div>
               </div>
 
                   <p>Quantity / Available in stock</p>
                   <input type="text" placeholder="##" id="quantity" name="quantity" required>
+                  <div class="error-message" id="error_quantity"></div>
           <br>
           <br>
                   <button type="submit" class="new-Product-save">Save</button>
@@ -258,20 +273,94 @@
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('immage').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            const preview = document.getElementById('imagePreview');
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-    });
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Image preview
+  document.getElementById('immage').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('imagePreview');
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Form submit via fetch
+  const productForm = document.getElementById('productForm');
+  productForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(productForm);
+
+    // Get field values
+    const name = formData.get('product_display_name')?.trim();
+    const price = parseFloat(formData.get('price'));
+    const quantity = parseInt(formData.get('quantity'));
+    const image = formData.get('image');
+    const uid = formData.get('UID');
+
+    // Validation rules
+    const nameRegex = /^[a-zA-Z0-9 ]{1,100}$/; // allows letters, numbers, and spaces only (no special characters)
+    const whiteSpaceCheck = /\s{2,}/; // 2 or more consecutive spaces
+
+    if (!name || !nameRegex.test(name) || whiteSpaceCheck.test(name)) {
+      showModal('Product name is invalid. No special characters or long spaces allowed.');
+      return;
+    }
+
+    if (!price || isNaN(price) || price < 500 || price > 90000) {
+      showModal('Price must be between 500 and 90,000.');
+      return;
+    }
+
+    if (!quantity || isNaN(quantity) || quantity < 7 || quantity > 100) {
+      showModal('Quantity must be between 7 and 100.');
+      return;
+    }
+
+    if (!uid) {
+      showModal('UID is required.');
+      return;
+    }
+
+    try {
+      const response = await fetch('test_insert.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.text();
+      showModal(result);
+
+      if (result.toLowerCase().includes('success')) {
+        productForm.reset();
+        document.getElementById('imagePreview').style.display = 'none';
+      }
+
+    } catch (error) {
+      showModal('Something went wrong!');
+    }
+  });
+
+  // Reusable function to show the popup modal
+  function showModal(message) {
+    document.getElementById('modalMessage').textContent = message;
+    const popupModal = document.getElementById('popupModal');
+    popupModal.style.display = 'block';
+
+    const closeModalBtn = document.getElementById('closeModal');
+    closeModalBtn.onclick = () => {
+      popupModal.style.display = 'none';
+    };
+  }
+
+
+});
 </script>
+
+
 

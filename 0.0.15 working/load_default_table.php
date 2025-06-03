@@ -34,20 +34,19 @@ if (mysqli_num_rows($result) > 0) {
             </tr>
           </thead><tbody>';
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<tr id="row-' . $row['ID'] . '">';
-        echo '<td><a href="#" onclick="loadUpdateForm(' . $row['ID'] . '); return false;">' .
-             htmlspecialchars($row['product_display_name']) .
-             '</a></td>';
-        echo '<td>' . htmlspecialchars($row['category']) . '</td>';
-        echo '<td>' . htmlspecialchars($row['UID']) . '</td>';
-        echo '<td>₱' . htmlspecialchars($row['price']) . '</td>';
-        echo '<td>' . htmlspecialchars($row['quantity']) . '</td>';
-        $statusText = ($row['status'] == 1) ? 'Visible' : 'Hidden';
-        $buttonText = ($row['status'] == 1) ? 'Hide' : 'Unhide';
-       echo '<td>' . $statusText . '</td>';
-        echo '</tr>';
-    }
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo '<tr id="row-' . htmlspecialchars($row['ID']) . '">';
+    echo '<td>' . htmlspecialchars($row['product_display_name']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['category']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['UID']) . '</td>';
+    echo '<td>₱' . htmlspecialchars($row['price']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['quantity']) . '</td>';
+    $statusText = ($row['status'] == 1) ? 'Visible' : 'Hidden';
+    $buttonText = ($row['status'] == 1) ? 'Hide' : 'Unhide';
+    echo '<td>' . $statusText . '</td>';
+    echo '</tr>';
+}
+
 
     echo '</tbody></table>';
 } else {
