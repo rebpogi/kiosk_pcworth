@@ -59,7 +59,9 @@
     <div class="max-w-5xl mx-auto p-6">
       <div class="bg-white shadow-md rounded-lg p-6 flex flex-col md:flex-row gap-6 items-start border">
         <!-- Product Image -->
-        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" class="w-full md:w-1/2 rounded shadow">
+        <img src="../<?php echo htmlspecialchars($product['immage']); ?>" 
+        alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" 
+        class="w-full md:w-1/2 rounded shadow">
 
         <!-- Product Info -->
         <div class="flex-1 space-y-4">
