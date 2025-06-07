@@ -1,4 +1,6 @@
 <?php
+session_start();
+$_SESSION['return_to'] = $_SERVER['REQUEST_URI'];
 // Database connection
 $host = "localhost";
 $username = "zas"; // Change if needed
@@ -56,7 +58,7 @@ $conn->close();
     <button onclick="location.href='secmainkiosk.php'">
       <img src="resource/home.png" alt="Home">
     </button>
-    <button onclick="location.href=' '">
+    <button onclick="location.href='viewcart.php'">
       <img src="resource/cart.png" alt="Cart">
     </button>
   </div>
@@ -83,7 +85,9 @@ $conn->close();
       <div class="product-grid">
         <?php foreach ($items as $product): ?>
           <div class="product-card">
-            <img src="<?php echo $product['immage'] ?: ' ' ?>" alt="<?php echo htmlspecialchars($product['product_display_name']) ?>">
+            <img src="../<?php echo htmlspecialchars($product['immage']); ?>" 
+            alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" 
+            class="w-full md:w-1/2 rounded shadow">
             <h3 class="cardfont"><?php echo htmlspecialchars($product['product_display_name']) ?></h3>
             <div class="price">₱<?php echo number_format($product['price'], 2) ?></div>
             <a href="viewproduct.php?ID=<?php echo $product['ID']; ?>" class="view-btn">View Item Details</a>
