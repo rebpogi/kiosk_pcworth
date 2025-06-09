@@ -39,6 +39,9 @@
     <script>
     const maxStock = <?php echo (int)$product['stock']; ?>;
     </script>
+    <script>
+  window.productId = <?= json_encode($product['ID']); ?>;
+</script>
   <script src="viewpro.js" defer></script>
   </head>
 
@@ -59,7 +62,9 @@
     <div class="max-w-5xl mx-auto p-6">
       <div class="bg-white shadow-md rounded-lg p-6 flex flex-col md:flex-row gap-6 items-start border">
         <!-- Product Image -->
-        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" class="w-full md:w-1/2 rounded shadow">
+        <img src="../<?php echo htmlspecialchars($product['immage']); ?>" 
+     alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" 
+     class="w-full md:w-1/2 rounded shadow">
 
         <!-- Product Info -->
         <div class="flex-1 space-y-4">
@@ -106,11 +111,7 @@
         <button onclick="goBack()" class="bg-blue-600 text-white px-8 py-3 rounded hover:bg-blue-700">Return</button>
 
         <?php if ((int)$product['quantity'] > 0): ?>
-        <form action="addtocart.php" method="POST" onsubmit="return validateQty();">
-        <input type="hidden" name="ID" value="<?= $product['ID'] ?>">
-        <input type="hidden" name="quantity" id="form_qty" value="1">
-        <button type="submit" class="bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700">Add to Cart</button>
-        </form>
+        <button id="addToCartBtn" class="bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700">Add to Cart</button>
         <?php else: ?>
           <button disabled class="bg-yellow-400 text-white px-8 py-3 rounded cursor-not-allowed">Out of Stock</button>
         <?php endif; ?>
