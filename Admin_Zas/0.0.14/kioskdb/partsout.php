@@ -58,11 +58,14 @@ $conn->close();
     <button onclick="location.href='secmainkiosk.php'">
       <img src="resource/home.png" alt="Home">
     </button>
-    <button onclick="location.href='viewcart.php'">
+
+    <button onclick="location.href='viewcart.php'" class="cart-button">
       <img src="resource/cart.png" alt="Cart">
+      <!-- Cart badge will be added dynamically -->
+      <span id="cart-count" class="cart-badge" style="display:none;"></span>
     </button>
-  </div>
-</nav>
+      </div>
+    </nav>
 
 <div class="container">
   <aside>
@@ -81,21 +84,30 @@ $conn->close();
 
   <main>
     <?php foreach ($products as $cat => $items): ?>
-    <div class="item" id="<?php echo $cat ?>" style="display: none;">
-      <div class="product-grid">
-        <?php foreach ($items as $product): ?>
-          <div class="product-card">
-            <img src="../<?php echo htmlspecialchars($product['immage']); ?>" 
-            alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" 
-            class="w-full md:w-1/2 rounded shadow">
-            <h3 class="cardfont"><?php echo htmlspecialchars($product['product_display_name']) ?></h3>
-            <div class="price">₱<?php echo number_format($product['price'], 2) ?></div>
-            <a href="viewproduct.php?ID=<?php echo $product['ID']; ?>" class="view-btn">View Item Details</a>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-    <?php endforeach; ?>
+<div class="item" id="<?php echo $cat ?>" style="display: none;">
+  <div class="product-grid">
+    <?php if (empty($items)): ?>
+  <div class="no-products-message">
+    <img src="resource/sadkachi.png" alt="No products" class="no-products-icon">
+    <p>No products currently available.</p>
+  </div>
+    <?php else: ?>
+      <?php foreach ($items as $product): ?>
+        <div class="product-card">
+          <img src="../<?php echo htmlspecialchars($product['immage']); ?>" 
+               alt="<?php echo htmlspecialchars($product['product_display_name']); ?>" 
+               class="product-image">
+          <h3 class="cardfont"><?php echo htmlspecialchars($product['product_display_name']) ?></h3>
+          <div class="price">₱<?php echo number_format($product['price'], 2) ?></div>
+          <a href="viewproduct.php?ID=<?php echo $product['ID']; ?>" class="view-btn">View Item Details</a>
+        </div>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  </div>
+</div>
+<?php endforeach; ?>
+
+
 
     <div class="item" id="allitem" style="display: none;">
       <div class="product-grid"><!-- JS Clones Items Here --></div>

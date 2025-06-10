@@ -9,30 +9,33 @@ $database = "testing_backend";
 
 $conn = new mysqli($host, $username, $password, $database);
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  response(false, "Database connection failed.");
 }
 
 // Validate input
 if (!isset($_POST['ID'], $_POST['quantity'])) {
-  die("Invalid request.");
+  response(false, "Invalid request.");
 }
 
 $product_id = intval($_POST['ID']);
 $quantity = intval($_POST['quantity']);
 
 // Fetch product details
-$sql = "SELECT * FROM products WHERE ID = $product_id";
-$result = $conn->query($sql);
+$sql = "SELECT * FROM products WHERE ID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $product_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if (!$result || $result->num_rows !== 1) {
-  die("Product not found or unavailable.");
+  response(false, "Product not found or unavailable.");
 }
 
 $product = $result->fetch_assoc();
 
 // Check stock
 if ($quantity > $product['quantity']) {
-  die("Quantity exceeds available stock.");
+  response(false, "Quantity exceeds available stock.");
 }
 
 // Initialize cart if not already
@@ -50,12 +53,21 @@ if (isset($_SESSION['cart'][$product_id])) {
     'price' => $product['price'],
     'image_url' => $product['immage'],
     'quantity' => $quantity
-  ];  
+  ];
 }
 
 $conn->close();
 
-// Redirect to cart or confirmation page
-header("Location: viewcart.php");
-exit();
-?>
+// Return JSON if AJAX, else redirect
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+  response(true);
+} else {
+  header("Location: viewcart.php");
+  exit();
+}
+
+function response($success, $message = "") {
+  header('Content-Type: application/json');
+  echo json_encode(['success' => $success, 'message' => $message]);
+  exit();
+}
