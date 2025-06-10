@@ -59,15 +59,10 @@ $conn->close();
       <img src="resource/home.png" alt="Home">
     </button>
 
-        <?php
-    $cartCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
-    ?>
-
     <button onclick="location.href='viewcart.php'" class="cart-button">
       <img src="resource/cart.png" alt="Cart">
-      <?php if ($cartCount > 0): ?>
-        <span class="cart-badge"><?php echo $cartCount; ?></span>
-      <?php endif; ?>
+      <!-- Cart badge will be added dynamically -->
+      <span id="cart-count" class="cart-badge" style="display:none;"></span>
     </button>
       </div>
     </nav>
