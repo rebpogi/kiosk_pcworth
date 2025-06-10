@@ -77,81 +77,84 @@
   </nav>
 
   <div class="container">
-    <aside>
-      <button onclick="setActiveSection('allbrand')" class="btl">
-        <img class="btlimg5" src="resource/pcwg.png" alt="All Brands" />
-      </button>
-      <button onclick="setActiveSection('asus')" class="btl">
-        <img class="btlimg1" src="resource/asusl.png" alt="ASUS" />
-      </button>
-      <button onclick="setActiveSection('msi')" class="btl">
-        <img class="btlimg2" src="resource/msil.png" alt="MSI" />
-      </button>
-      <button onclick="setActiveSection('asrock')" class="btl">
-        <img class="btlimg3" src="resource/asrl.png" alt="ASRock" />
-      </button>
-      <button onclick="setActiveSection('gigabyte')" class="btl">
-        <img class="btlimg4" src="resource/gigal.png" alt="Gigabyte" />
-      </button>
+   <!-- Brand Filter Buttons (Lowercase IDs) -->
+<aside>
+  <button onclick="setActiveSection('allbrand')" class="btl">
+    <img class="btlimg5" src="resource/pcwg.png" alt="All Brands" />
+  </button>
+  <button onclick="setActiveSection('asus')" class="btl">
+    <img class="btlimg1" src="resource/asusl.png" alt="ASUS" />
+  </button>
+  <button onclick="setActiveSection('msi')" class="btl">
+    <img class="btlimg2" src="resource/msil.png" alt="MSI" />
+  </button>
+  <button onclick="setActiveSection('asrock')" class="btl">
+    <img class="btlimg3" src="resource/asrl.png" alt="ASRock" />
+  </button>
+  <button onclick="setActiveSection('gigabyte')" class="btl">
+    <img class="btlimg4" src="resource/gigal.png" alt="Gigabyte" />
+  </button>
+</aside>
+
     </aside>
 
-    <main>
-     
+<?php
+$conn = new mysqli('localhost', 'root', '', 'testing_backend');
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-      <!-- Brand sections -->
-      <div class="brand" id="allbrand" style="display: none;">
-        <div class="product-grid"></div>
-      </div>
+$products_by_brand = [];
+$sql = "SELECT * FROM prebuilt_pcs";
+$result = $conn->query($sql);
 
-      <div class="brand" id="asus" style="display: none;">
-        <div class="product-grid">
-          <div class="product-card">
-            <img src="resource/darkreaver.jpg" alt="Dark Reaver Build" />
-            <h3 class="cardfont">Dark Reaver Build</h3>
-            <div class="price">₱175,690.00</div>
-            <div class="old-price">₱196,772.80</div>
-            <a href="#" class="view-btn">View PC Details</a>
-          </div>
+if ($result && $result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $brand_key = strtolower($row['brand']); // lowercase
+        $products_by_brand[$brand_key][] = $row;
+    }
+}
+?>
+
+
+
+<!-- HTML layout here (same as yours up to the <main> tag) -->
+
+<main>
+<!-- All Brands Section -->
+<div class="brand" id="allbrand">
+  <div class="product-grid">
+    <?php foreach ($products_by_brand as $brand => $products): ?>
+      <?php foreach ($products as $product): ?>
+        <div class="product-card">
+          <img src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>" />
+          <h3 class="cardfont"><?php echo $product['name']; ?></h3>
+          <div class="price">₱<?php echo number_format($product['promo_price'], 2); ?></div>
+          <a href="#" class="view-btn">View PC Details</a>
         </div>
-      </div>
+      <?php endforeach; ?>
+    <?php endforeach; ?>
+  </div>
+</div>
 
-      <div class="brand" id="msi" style="display: none;">
-        <div class="product-grid">
-          <div class="product-card">
-            <img src="resource/eab.png" alt="Eabab Build" />
-            <h3 class="cardfont">Eabab Build</h3>
-            <div class="price">₱29,365.00</div>
-            <div class="old-price">₱32,888.80</div>
-            <a href="#" class="view-btn">View PC Details</a>
-          </div>
+<!-- Individual Brand Sections -->
+<?php foreach ($products_by_brand as $brand => $products): ?>
+  <div class="brand" id="<?php echo $brand; ?>" style="display: none;">
+    <div class="product-grid">
+      <?php foreach ($products as $product): ?>
+        <div class="product-card">
+          <img src="<?php echo $product['image_path']; ?>" alt="<?php echo $product['name']; ?>" />
+          <h3 class="cardfont"><?php echo $product['name']; ?></h3>
+          <div class="price">₱<?php echo number_format($product['promo_price'], 2); ?></div>
+          <a href="#" class="view-btn">View PC Details</a>
         </div>
-      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+<?php endforeach; ?>
 
-      <div class="brand" id="asrock" style="display: none;">
-        <div class="product-grid">
-          <div class="product-card">
-            <img src="resource/ss.png" alt="Sunshade Build" />
-            <h3 class="cardfont">Sunshade Build</h3>
-            <div class="price">₱24,995.00</div>
-            <div class="old-price">₱27,994.40</div>
-            <a href="#" class="view-btn">View PC Details</a>
-          </div>
-        </div>
-      </div>
+</main>
 
-      <div class="brand" id="gigabyte" style="display: none;">
-        <div class="product-grid">
-          <div class="product-card">
-            <img src="resource/sbl.png" alt="Sobrang Latina Build" />
-            <h3 class="cardfont">Sobrang Latina Build</h3>
-            <div class="price">₱47,161.00</div>
-            <div class="old-price">₱52,820.32</div>
-            <a href="#" class="view-btn">View PC Details</a>
-          </div>
-        </div>
-      </div>
-
-    </main>
   </div>
 </body>
 </html>
