@@ -108,7 +108,9 @@ $total = 0;
         <form method="POST" class="bg-white shadow rounded-lg mb-4 p-4 flex items-center justify-between" data-product-id="<?= $id ?>">
           <input type="hidden" name="product_id" value="<?= $id ?>">
           <div class="flex items-center gap-4">
-            <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="w-20 h-20 object-cover rounded">
+            <img src="../<?= htmlspecialchars($item['image_url']) ?>" 
+                alt="<?= htmlspecialchars($item['name']) ?>" 
+                class="w-24 h-24 object-contain rounded border">
             <div>
               <h2 class="font-semibold"><?php echo htmlspecialchars($item['name']); ?></h2>
             <!-- Quantity buttons -->
@@ -137,12 +139,12 @@ $total = 0;
             </div>
             </div>
           </div>
-          <div class="text-right space-y-2">
+          <div class="flex flex-col justify-between items-end space-y-2 min-w-[120px]">
             <p class="text-red-600 font-bold text-lg subtotal" data-product-id="<?= $id ?>">
-            ₱<?= number_format($item['price'] * $item['quantity'], 2) ?>
+              ₱<?= number_format($item['price'] * $item['quantity'], 2) ?>
             </p>
-            <button type="submit" name="remove_item" class="flex items-center gap-1 text-red-600 hover:text-red-800 text-sm border border-red-500 px-2 py-1 rounded">
-            <i class="fas fa-trash-alt"></i> Remove
+            <button type="submit" name="remove_item" class="flex items-center gap-1 text-red-600 hover:text-red-800 text-sm border border-red-500 px-2 py-1 rounded whitespace-nowrap">
+              <i class="fas fa-trash-alt"></i> Remove
             </button>
           </div>
         </form>
