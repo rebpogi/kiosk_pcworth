@@ -141,8 +141,8 @@ $total = 0;
             <p class="text-red-600 font-bold text-lg subtotal" data-product-id="<?= $id ?>">
             ₱<?= number_format($item['price'] * $item['quantity'], 2) ?>
             </p>
-            <button type="submit" name="remove_item" class="text-red-600 hover:text-red-800">
-              <i class="fas fa-trash-alt"></i>
+            <button type="submit" name="remove_item" class="flex items-center gap-1 text-red-600 hover:text-red-800 text-sm border border-red-500 px-2 py-1 rounded">
+            <i class="fas fa-trash-alt"></i> Remove
             </button>
           </div>
         </form>
@@ -152,11 +152,20 @@ $total = 0;
 
     <!-- Footer -->
     <div class="bg-white shadow-md p-4 rounded-lg mt-6 flex justify-between items-center">
-      <div class="text-lg font-semibold">Cart Total: ₱<span id="total"><?= number_format($total, 2) ?></span></div>
-      <div class="space-x-2">
-        <button onclick="history.back()" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">Return</button>
-        <a href="checkout.php" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800">Proceed to Checkout</a>
-      </div>
+      <div class="text-lg font-semibold">Cart Total: <span id="total">₱<?= number_format($total, 2) ?></span></div>
+    <div class="space-x-2">
+    <?php
+        $return_to = isset($_SESSION['return_to']) ? $_SESSION['return_to'] : 'index.php';
+    ?>
+    <form method="GET" action="<?= htmlspecialchars($return_to) ?>" style="display: inline;">
+        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">Return</button>
+    </form>
+    <form action="select_payment.php" method="POST" style="display: inline;">
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        Proceed to Checkout
+        </button>
+    </form>
+    </div>
     </div>
   </div>
 

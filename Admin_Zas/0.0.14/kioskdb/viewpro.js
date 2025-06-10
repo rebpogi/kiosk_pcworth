@@ -11,32 +11,60 @@ function updateQty(change) {
 
 function validateQty() {
   const qty = parseInt(document.getElementById('qty').value);
-  if (qty < 1) {
-    alert("Please select at least 1 item.");
-    return false;
-  }
-  return true;
+  return qty >= 1;
 }
 
-// Go back to previous page
 function goBack() {
   history.back();
 }
 
-// Simulate add to cart logic
-function addToCart() {
-  const qty = parseInt(document.getElementById('qty').value);
+// Handles form submission via AJAX
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartForm = document.getElementById("addToCartForm");
 
-  if (isNaN(qty) || qty <= 0) {
-    alert("Please select at least 1 item.");
-    return;
+  if (addToCartForm) {
+    addToCartForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const qty = parseInt(formData.get("quantity"));
+
+      if (isNaN(qty) || qty <= 0) {
+        alert("Please select at least 1 item.");
+        return;
+      }
+
+      fetch("addtocart.php", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            showModal();
+          } else {
+            alert(data.message || "An error occurred.");
+          }
+        })
+        .catch(() => {
+          alert("An error occurred while adding to cart.");
+        });
+    });
   }
+});
 
-  if (typeof maxStock !== 'undefined' && qty > maxStock) {
-    alert(`Only ${maxStock} item(s) available in stock.`);
-    return;
-  }
+function showModal() {
+  const modal = document.getElementById("addedModal");
+  if (!modal) return;
 
-  alert(`Added ${qty} item(s) to cart.`);
-  // TODO: Add API or server-side logic to update cart
+  modal.classList.remove("hidden");
+
+  // Auto-close after 2.5 seconds
+  setTimeout(() => {
+    modal.classList.add("hidden");
+  }, 2500);
 }
