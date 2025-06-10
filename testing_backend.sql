@@ -142,3 +142,19 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- FOR PREBUILD
+CREATE TABLE prebuilt_pcs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  brand VARCHAR(50),
+  promo_price DECIMAL(10,2),
+  image_path VARCHAR(255)
+);
+
+INSERT INTO prebuilt_pcs (name, brand, promo_price, image_path) VALUES
+('Dark Reaver Build', 'asus', 175690.00, 'resource/darkreaver.jpg'),
+('Eabab Build', 'msi', 29365.00, 'resource/eab.png'),
+('Sunshade Build', 'asrock', 24995.00, 'resource/ss.png'),
+('Sobrang Latina Build', 'gigabyte', 47161.00, 'resource/sbl.png');
