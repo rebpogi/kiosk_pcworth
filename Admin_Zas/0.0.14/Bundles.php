@@ -64,7 +64,19 @@
 
     <p>Bundle UID</p>
     <input id="bundle_uid" name="bundle_uid" type="number" required>
+    
+    <div class="input-field">
+      <p>Bundle Powered By</p>
+      <select id="bundle_powered_by" name="bundle_powered_by" required>
+       <option value="">-- Select Brand --</option>
+       <option value="asus">ASUS</option>
+       <option value="msi">MSI</option>
+       <option value="asrock">ASROCK</option>
+       <option value="gigabyte">GIGABYTE</option>
+    </select>
+    </div>
 
+    
     <p>
       <input type="checkbox" id="status" name="status">
       <label for="status">Hide product on kiosk (check to hide)</label>
@@ -178,11 +190,11 @@
         row.querySelector(".img-cell").innerHTML = `<img src="${image}" width="50">`;
         row.querySelector(".part-cell").innerHTML = `${name} <button onclick=\"Load_Bundle_search_select('${currentTargetCategory}')\">Change</button>`;
         row.querySelector(".qty-cell").textContent = qty;
-        row.querySelector(".price-cell").textContent = `$${(parseFloat(price) * parseInt(qty)).toFixed(2)}`;
+        row.querySelector(".price-cell").textContent = `₱${(parseFloat(price) ).toFixed(2)}`;
 
         // Add hidden inputs for submission
         row.innerHTML += `<input type="hidden" name="part_${currentTargetCategory}_uid" value="${uid}">
-                          <input type="hidden" class="price-data" value="${parseFloat(price) * parseInt(qty)}">`;
+                          <input type="hidden" class="price-data" value="${parseFloat(price)}">`;
       }
     });
     updateTotal();
@@ -194,7 +206,7 @@
     document.querySelectorAll(".price-data").forEach(input => {
       total += parseFloat(input.value);
     });
-    document.getElementById("totalPrice").textContent = `$${total.toFixed(2)}`;
+    document.getElementById("totalPrice").textContent = `₱${total.toFixed(2)}`;
   }
 </script>
 
