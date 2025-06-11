@@ -1,4 +1,15 @@
 <?php
 session_start();
-echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
+$totalQuantity = 0;
+
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        if (isset($item['quantity'])) {
+            $totalQuantity += $item['quantity'];
+        }
+    }
+}
+
+echo $totalQuantity;
 ?>

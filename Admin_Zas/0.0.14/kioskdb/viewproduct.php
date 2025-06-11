@@ -44,6 +44,22 @@ $conn->close();
     const maxStock = <?php echo (int)$product['quantity']; ?>;
   </script>
   <script src="viewpro.js" defer></script>
+  
+<style>
+  .product-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+  }
+
+  .product-content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+  }
+</style>
+
+
 </head>
 
 <body>
@@ -95,23 +111,32 @@ $conn->close();
     </div>
     </div>
 
-    <!-- Product Description -->
-    <section class="mt-10 border-t pt-6">
-      <h2 class="text-2xl font-bold mb-2">Product Description</h2>
-      <p class="text-gray-700"><?php echo nl2br(htmlspecialchars($product['product_description'])); ?></p>
-    </section>
+<!-- Product Description -->
+<section class="mt-10 border-t pt-6">
+  <h2 class="text-2xl font-bold mb-2">Product Description</h2>
+  <?php if (!empty($product['product_description'])): ?>
+    <div class="text-gray-700 prose max-w-none">
+      <?= $product['product_description'] ?>
+    </div>
+  <?php else: ?>
+    <p class="text-sm text-gray-500">No description available.</p>
+  <?php endif; ?>
+</section>
 
-    <!-- Specifications -->
-    <section class="mt-10 border-t pt-6">
-      <h2 class="text-2xl font-bold mb-2">Specifications</h2>
-      <?php if (!empty($product['specs'])): ?>
-        <div class="text-sm text-gray-800 whitespace-pre-line">
-          <?= nl2br(htmlspecialchars($product['specs'])) ?>
-        </div>
-      <?php else: ?>
-        <p class="text-sm text-gray-500">No specifications available.</p>
-      <?php endif; ?>
-    </section>
+<!-- Specifications -->
+<section class="mt-10 border-t pt-6">
+  <h2 class="text-2xl font-bold mb-2">Specifications</h2>
+  <?php if (!empty($product['product_specifications'])): ?>
+    <div class="text-sm text-gray-800 product-content">
+      <?= $product['product_specifications'] ?>
+    </div>
+  <?php else: ?>
+    <p class="text-sm text-gray-500">No specifications available.</p>
+  <?php endif; ?>
+</section>
+
+
+
 
     <!-- Action Buttons -->
     <section class="mt-10 border-t pt-6 flex justify-between">
