@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['return_to'] = $_SERVER['REQUEST_URI'];
+$_SESSION['return_to'] = $_SERVER['REQUEST_URI']; // add to other pages to redirect back after cancel
 // Database connection
 $host = "localhost";
 $username = "zas"; // Change if needed
