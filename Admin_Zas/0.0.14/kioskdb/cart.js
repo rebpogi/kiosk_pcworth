@@ -20,11 +20,11 @@ function updateCartQty(productId, newQty) {
     const qtyInput = document.querySelector(`input.qty-input[data-product-id="${productId}"]`);
     qtyInput.value = data.newQty;
 
-    const subtotalElem = document.querySelector(`.subtotal[data-product-id="${productId}"]`);
-    if (subtotalElem) subtotalElem.textContent = data.subtotal;
+const subtotalElem = document.querySelector(`.subtotal[data-product-id="${productId}"]`);
+if (subtotalElem) subtotalElem.innerText = `₱${data.subtotal}`;
 
-    const totalElem = document.getElementById('total');
-    if (totalElem) totalElem.textContent = data.total;
+const totalElem = document.getElementById('total');
+if (totalElem) totalElem.innerText = `₱${data.total}`;
   })
   .catch(err => {
     console.error('Error updating quantity:', err);

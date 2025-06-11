@@ -108,7 +108,9 @@ $total = 0;
         <form method="POST" class="bg-white shadow rounded-lg mb-4 p-4 flex items-center justify-between" data-product-id="<?= $id ?>">
           <input type="hidden" name="product_id" value="<?= $id ?>">
           <div class="flex items-center gap-4">
-            <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="w-20 h-20 object-cover rounded">
+            <img src="../<?= htmlspecialchars($item['image_url']) ?>" 
+                alt="<?= htmlspecialchars($item['name']) ?>" 
+                class="w-24 h-24 object-contain rounded border">
             <div>
               <h2 class="font-semibold"><?php echo htmlspecialchars($item['name']); ?></h2>
             <!-- Quantity buttons -->
@@ -137,12 +139,12 @@ $total = 0;
             </div>
             </div>
           </div>
-          <div class="text-right space-y-2">
+          <div class="flex flex-col justify-between items-end space-y-2 min-w-[120px]">
             <p class="text-red-600 font-bold text-lg subtotal" data-product-id="<?= $id ?>">
-            ₱<?= number_format($item['price'] * $item['quantity'], 2) ?>
+              ₱<?= number_format($item['price'] * $item['quantity'], 2) ?>
             </p>
-            <button type="submit" name="remove_item" class="text-red-600 hover:text-red-800">
-              <i class="fas fa-trash-alt"></i>
+            <button type="submit" name="remove_item" class="flex items-center gap-1 text-red-600 hover:text-red-800 text-sm border border-red-500 px-2 py-1 rounded whitespace-nowrap">
+              <i class="fas fa-trash-alt"></i> Remove
             </button>
           </div>
         </form>
@@ -152,11 +154,20 @@ $total = 0;
 
     <!-- Footer -->
     <div class="bg-white shadow-md p-4 rounded-lg mt-6 flex justify-between items-center">
-      <div class="text-lg font-semibold">Cart Total: ₱<span id="total"><?= number_format($total, 2) ?></span></div>
-      <div class="space-x-2">
-        <button onclick="history.back()" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">Return</button>
-        <a href="checkout.php" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800">Proceed to Checkout</a>
-      </div>
+      <div class="text-lg font-semibold">Cart Total: <span id="total">₱<?= number_format($total, 2) ?></span></div>
+    <div class="space-x-2">
+    <?php
+        $return_to = isset($_SESSION['return_to']) ? $_SESSION['return_to'] : 'index.php';
+    ?>
+    <form method="GET" action="<?= htmlspecialchars($return_to) ?>" style="display: inline;">
+        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">Return</button>
+    </form>
+    <form action="select_payment.php" method="POST" style="display: inline;">
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        Proceed to Checkout
+        </button>
+    </form>
+    </div>
     </div>
   </div>
 

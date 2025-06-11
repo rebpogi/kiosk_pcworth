@@ -40,3 +40,19 @@
   window.onload = () => {
     setActiveSection('allitem');
   };
+
+  document.addEventListener('DOMContentLoaded', () => {
+  fetch('get_cart_count.php')
+    .then(response => response.text())
+    .then(count => {
+      const badge = document.getElementById('cart-count');
+      const parsedCount = parseInt(count);
+      if (!isNaN(parsedCount) && parsedCount > 0) {
+        badge.textContent = parsedCount;
+        badge.style.display = 'inline-block';
+      } else {
+        badge.style.display = 'none';
+      }
+    })
+    .catch(error => console.error('Cart count fetch failed:', error));
+});
