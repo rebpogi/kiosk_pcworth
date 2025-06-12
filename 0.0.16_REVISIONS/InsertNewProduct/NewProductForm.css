@@ -1,0 +1,249 @@
+/*========== FORM WRAPPER ==========*/
+.form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px; /* Reduced gap for tighter spacing */
+  margin-top: 20px;
+}
+
+form {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+/*========== FORM GROUPS ==========*/
+.input-group {
+  display: flex;
+  flex-wrap: wrap; /* Keeps wrapping on smaller screens */
+  gap: 20px; /* Horizontal & vertical spacing between fields */
+  margin-bottom: 20px; /* Space between groups */
+}
+
+.input-field {
+  flex: 1 1 300px; /* Controls width, adjusts with screen size */
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Space between label and input */
+}
+
+/*========== FORM LABELS ==========*/
+form p {
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+/*========== FORM ELEMENTS ==========*/
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: rgb(218, 246, 255);
+  outline: none;
+}
+
+/* Special textarea box */
+.style_box {
+  height: 150px;
+  resize: vertical;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  transform: scale(1.5);
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/*========== BUTTONS ==========*/
+.new-Product-save,
+.new-Product-update,
+.custom-upload,
+.custom-update-immage {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  display: inline-block;
+}
+
+.new-Product-save:hover,
+.new-Product-update:hover,
+.custom-upload:hover,
+.custom-update-immage:hover {
+  background-color: #0056b3;
+}
+
+/*========== IMAGE PREVIEW ==========*/
+#imagePreview,
+#UpdateimagePreview {
+  width: 700px;
+  height: 700px;
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  object-fit: cover;
+}
+
+/* Hide default file input */
+#immage,
+#new_immage {
+  display: none;
+}
+
+/*========== SEARCH SECTION ==========*/
+.search-container {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#search,
+#search-btn {
+  font-size: 16px;
+  height: 42px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+#search {
+  flex: 1;
+  padding: 0 12px;
+  border-radius: 5px;
+}
+
+#search-btn {
+  padding: 0 20px;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: #45a049;
+}
+
+/*========== TABLE ==========*/
+#result table,
+#default-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+}
+
+#result th, #result td,
+#default-table th, #default-table td {
+  padding: 12px;
+  border: 3px solid #000;
+  text-align: left;
+}
+
+#result th, #default-table th {
+  background-color: #3ea8ff;
+}
+
+#result tr:nth-child(even),
+#default-table tr:nth-child(even) {
+  background-color: #b9e8ff;
+}
+
+#result tr:hover,
+#default-table tr:hover {
+  background-color: #d775ed;
+}
+
+/*========== MODAL ==========*/
+.modalNewProduct {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid #000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.modalNewProduct-close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.modalNewProduct-message {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/*========== BUNDLE STYLES ==========*/
+.bundle-rectangle {
+  width: 150px;
+  height: 250px;
+  background-color: #d3d3d3;
+  border: 3px dashed #666;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.bundle-rectangle:hover {
+  background-color: #c0c0c0;
+  border-color: #444;
+}
+
+.plus-sign {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bundle-text {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #444;
+}
+
+/*========== RESPONSIVE ==========*/
+@media (max-width: 768px) {
+  .form-wrapper,
+  .input-group {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
