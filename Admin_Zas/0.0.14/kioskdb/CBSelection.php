@@ -134,8 +134,8 @@
       <button onclick="location.href='secmainkiosk.php'">
         <img src="resource/home.png" alt="Home">
       </button>
-      <button onclick="location.href=' '">
-        <img src="resource/cart.png" alt="Cart">
+        <button onclick="location.href='viewcart.php'" class="cart-button">
+      <img src="resource/cart.png" alt="Cart">
       </button>
     </div>
   </nav>
@@ -266,6 +266,8 @@
         // After all items added, redirect to viewcart.php
         window.location.href = 'viewcart.php';
       }
+
+      
 
 
   </script>

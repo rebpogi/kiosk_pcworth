@@ -85,7 +85,7 @@ $total = 0;
     <div class="flex items-center justify-between border-b pb-4 mb-4">
       <div class="flex items-center gap-2">
         <img src="resource/logo.png" alt="PC Worth Logo" class="w-50 h-10">
-        <h1 class="text-xl font-bold"><i class="fas fa-shopping-cart mr-1"></i> My Cart</h1>
+        <h1 class="text-xl font-bold"><i class="fas fa-shopping-cart mr-1"></i> My Cart </h1>
       </div>
       <form method="POST">
         <button type="submit" name="clear_cart" class="flex items-center text-red-600 border border-red-500 px-3 py-1 rounded hover:bg-red-100">

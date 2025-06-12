@@ -54,6 +54,10 @@ $conn->close();
       transition: background-color 0.3s ease, transform 0.2s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+    .build-table td:last-child {
+      padding-right: 30px;
+      }   
+
 
     .return-button:hover {
       background-color: #666;
@@ -94,7 +98,7 @@ $conn->close();
         <th scope="col">Product</th>
         <th scope="col">Details</th>
         <th scope="col">Price</th>
-        <th scope="col">Action</th>
+         <th scope="col" style="text-align: center;">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -119,6 +123,43 @@ $conn->close();
       sessionStorage.setItem(component, JSON.stringify(product));
       window.location.href = "CBSelection.php";
     }
+    const compatibility = {
+  AM4: {
+    ram: ['DDR4'],
+    moboSockets: ['AM4']
+  },
+  AM5: {
+    ram: ['DDR5'],
+    moboSockets: ['AM5']
+  },
+  LGA1700: {
+    ram: ['DDR4', 'DDR5'],
+    moboSockets: ['LGA1700']
+  },
+  LGA1851: {
+    ram: ['DDR5'],
+    moboSockets: ['LGA1851']
+  }
+};
+
+// On CPU selection, filter compatible mobos and RAM
+function selectComponent(component, product) {
+  sessionStorage.setItem(component, JSON.stringify(product));
+
+  if (component === 'cpu') {
+    const socket = product.socket_type; // Ensure `socket_type` exists in DB
+    const data = compatibility[socket];
+    if (data) {
+      sessionStorage.setItem('compatibleRam', JSON.stringify(data.ram));
+      sessionStorage.setItem('compatibleMoboSockets', JSON.stringify(data.moboSockets));
+    }
+  }
+
+  window.location.href = "CBSelection.php";
+}
+
+
+
   </script>
 </body>
 </html>
