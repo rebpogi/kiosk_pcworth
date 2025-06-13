@@ -144,7 +144,7 @@
         <button class="Account-Btn" onclick="toggleDropdown(this)">Account Manager</button>
         <div class="Account-content" id="Account_Dropdown">
           <a href="#" data-section="Manage_Account" data-file="AccountsManagement/account.php">Account setting</a>
-          <a href="#" data-section="AccountCreation">AccountCreation</a>
+          <a href="#" data-section="AccountCreation" data-file="CreateNewAccount/SuperAdminCreateAccounts.php">AccountCreation</a>
           <a href="#" data-section="ViewAccounts" data-file="GroupAccountManagement/SuperAdmin-accounts.php">ViewAccounts</a>
         </div>
       </li>
@@ -165,7 +165,7 @@
     <div id="Prebuilds_section" class="section-content"></div>
     <div id="Sales_section" class="section-content"></div>
     <div id="Manage_Account" class="section-content"></div>
-    <div id="AccountCreation" class="section-content">WORK IN PROGRESS DITO DAPAT GAGAWA ACCOUNT USER</div>
+    <div id="AccountCreation" class="section-content"></div>
     <div id="ViewAccounts" class="section-content"></div>
   </main>
 
