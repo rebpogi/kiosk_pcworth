@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert into database
     $stmt = $conn->prepare("INSERT INTO products (
-        product_display_name, price, quantity, UID, category, manufacturer, Form_factor, Socket_type,Ram_socket_type, 
+        product_display_name, price, quantity, UID, category, manufacturer, Form_factor, Socket_type, Ram_socket_type, 
         product_specifications, product_description, status, immage, warranty_duration, created_at) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,? , ?, ?, ?, ?, NOW())");
 
