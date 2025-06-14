@@ -12,7 +12,7 @@ $pass = 'group4';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'message' => "Connection failed: " . $conn->connect_error]));
+    die(json_enco(['success' => false, 'message' => "Connection failed: " . $conn->connect_error]));
 }
 
 // Check if image file is uploaded
@@ -68,7 +68,7 @@ $Socket_type = $conn->real_escape_string($_POST['Socket_type'] ?? '');
 $Ram_socket_type = $conn->real_escape_string($_POST['Ram_socket_type'] ?? '');
 $product_specifications = $conn->real_escape_string($_POST['product_specifications'] ?? '');
 $product_description = $conn->real_escape_string($_POST['product_description'] ?? '');
-$status = isset($_POST['status']) ? 0 : 1;
+$status = isset($_POST['status']) && $_POST['status'] === 'unavailable' ? 'Unavailable' : 'Available';
 $warranty_duration = $conn->real_escape_string($_POST['warranty_duration'] ?? '');
 $UID = $conn->real_escape_string($_POST['UID'] ?? '');
 $quantity = intval($_POST['quantity'] ?? 0);
