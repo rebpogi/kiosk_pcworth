@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['id'] = $user['id']; // ✅ Store user ID for update functionality
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
+        $_SESSION['firstname'] = $user['firstname'];    // First name
         header("Location: admin.php");
         exit();
     } else {

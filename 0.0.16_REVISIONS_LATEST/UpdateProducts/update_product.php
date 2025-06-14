@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once 'DB_connect.php';
+session_start(); // Start the session
 
 $response = [
     'success' => false,
@@ -13,6 +14,11 @@ $response = [
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Invalid request method', 405);
+    }
+
+    // Check if user is logged in
+    if (!isset($_SESSION['firstname'])) {
+        throw new Exception('User not logged in', 401);
     }
 
     $productId = filter_input(INPUT_POST, 'ID', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
@@ -49,6 +55,7 @@ try {
     $uid = filter_var($_POST['UID'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $quantity = filter_var($_POST['quantity'] ?? 0, FILTER_VALIDATE_INT);
     $status = isset($_POST['status']) ? 0 : 1;
+    $updatedBy = $_SESSION['firstname']; // Get the firstname from session
 
     $optionalFields = [
         'Form_factor' => 'Not_Applicable',
@@ -124,15 +131,15 @@ try {
             product_display_name = ?, price = ?, category = ?, manufacturer = ?, 
             Form_factor = ?, Socket_type = ?, Ram_socket_type = ?, 
             product_specifications = ?, product_description = ?, warranty_duration = ?, 
-            UID = ?, quantity = ?, status = ?, updated_at = NOW()";
+            UID = ?, quantity = ?, status = ?, updated_at = NOW(), updated_by = ?";
 
         $params = [
             $displayName, $price, $category, $manufacturer,
             $Form_factor, $Socket_type, $Ram_socket_type,
             $specs, $description, $warranty,
-            $uid, $quantity, $status
+            $uid, $quantity, $status, $updatedBy
         ];
-        $types = 'sdssssssssiii';
+        $types = 'sdssssssssiiis';
 
         if ($imagePath) {
             $sql .= ", immage = ?";
@@ -166,7 +173,8 @@ try {
             'category' => $category,
             'manufacturer' => $manufacturer,
             'quantity' => $quantity,
-            'status' => $status
+            'status' => $status,
+            'updated_by' => $updatedBy
         ];
 
     } catch (Exception $e) {

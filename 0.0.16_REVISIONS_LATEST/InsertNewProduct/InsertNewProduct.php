@@ -4,6 +4,17 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
+if (!isset($_SESSION['username']) || !isset($_SESSION['role'])) {
+    header("Location: ../loginpage.php");
+    exit();
+}
+
+// Make sure the session actually contains 'firstname'
+if (!isset($_SESSION['username']) || !isset($_SESSION['role']) || !isset($_SESSION['firstname'])) {
+    die(json_encode(['success' => false, 'message' => "Unauthorized or session expired"]));
+}
+
+$firstName = $_SESSION['firstname']; // Get from session
 
 $host = 'localhost';
 $db = 'testing_backend';
@@ -72,19 +83,22 @@ $status = isset($_POST['status']) ? 0 : 1;
 $warranty_duration = $conn->real_escape_string($_POST['warranty_duration'] ?? '');
 $UID = $conn->real_escape_string($_POST['UID'] ?? '');
 $quantity = intval($_POST['quantity'] ?? 0);
+$created_by = $conn->real_escape_string($firstName); // Use the correct variable name
 
+// SQL with created_by
 $sql = "INSERT INTO products (
     product_display_name, price, category, manufacturer, Form_factor, Socket_type, Ram_socket_type,
-    product_specifications, product_description, status, immage, warranty_duration, UID, quantity
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    product_specifications, product_description, status, immage, warranty_duration, UID, quantity, created_by
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
     die(json_encode(['success' => false, 'message' => "Prepare failed: " . $conn->error]));
 }
 
+// Correct parameter types - note the last one is 's' for string
 $stmt->bind_param(
-    "sdsssssssssssd",
+    "sdsssssssisssis",
     $product_display_name,
     $price,
     $category,
@@ -98,7 +112,8 @@ $stmt->bind_param(
     $imagePathForDB,
     $warranty_duration,
     $UID,
-    $quantity
+    $quantity,
+    $created_by // This will now be properly passed
 );
 
 if ($stmt->execute()) {

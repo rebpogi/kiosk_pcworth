@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username']) || !isset($_SESSION['role'])) {
+    header("Location: loginpage.php");
+    exit();
+}
+
+$firstName = $_SESSION['firstname'];
+$username = $_SESSION['username'];
+$role = $_SESSION['role'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,13 +135,32 @@
     .active-section {
       display: block;
     }
+        .logout-button {
+      background-color: #e53935;
+      color: white;
+      padding: 6px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-button:hover {
+      background-color: #c62828;
+    }
+
   </style>
 </head>
 
 <body>
-  <nav class="navbar">
-    <span>PC WORTH ADMIN DASHBOARD</span>
-  </nav>
+<nav class="navbar">
+  <span>PC WORTH ADMIN DASHBOARD</span>
+  <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+    <span style="font-size: 16px;">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+    <a href="logout.php" class="logout-button">Logout</a>
+  </div>
+</nav>
+
 
   <nav class="sidebar" id="sidebarMenu">
     <ul>
@@ -165,7 +198,7 @@
     <div id="Prebuilds_section" class="section-content"></div>
     <div id="Sales_section" class="section-content"></div>
     <div id="Manage_Account" class="section-content"></div>
-    <div id="AccountCreation" class="section-content"></div>
+    <div id="AccountCreation" class="section-content">WORK IN PROGRESS DITO DAPAT GAGAWA ACCOUNT USER</div>
     <div id="ViewAccounts" class="section-content"></div>
   </main>
 

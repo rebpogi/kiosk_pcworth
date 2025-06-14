@@ -342,7 +342,7 @@ function insertData() {
   const form = document.getElementById('productForm');
   const formData = new FormData(form);
 
-  fetch("/phpscripts/0.0.16_REVISIONS/InsertNewProduct/InsertNewProduct.php", {
+  fetch("/phpscripts/0.0.16_REVISIONS_LATEST/InsertNewProduct/InsertNewProduct.php", {
     method: "POST",
     body: formData
   })

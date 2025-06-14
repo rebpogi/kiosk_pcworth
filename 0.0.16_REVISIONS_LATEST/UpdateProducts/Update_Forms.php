@@ -50,7 +50,7 @@ if (!$product) {
   <div id="AddProductForms" style="display: block;">
 
     <div class="form-wrapper"> 
-      <form id="UpdateProductForm" action="/phpscripts/0.0.16_REVISIONS/UpdateProducts/update_product.php" method="POST" enctype="multipart/form-data">
+      <form id="UpdateProductForm" action="/phpscripts/0.0.16_REVISIONS_LATEST/UpdateProducts/update_product.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="ID" value="<?= $productId ?>">
 
         <div class="input-group">
