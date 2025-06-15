@@ -25,134 +25,149 @@ $role = $_SESSION['role'];
   <script src="UpdateProducts/Update_Table.js"></script>
   <script src="UpdateProducts/productFormValidationTest.js"></script>
   <script src="AccountsManagement/account.js"></script>
+    <script src="Bundles/ExistingBundleTable.js"></script>
   <style>
-    /* --- Your existing styles --- */
-    body, html { margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; }
+  #adminPage body, 
+  #adminPage html { margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; }
 
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 48px;
-      background: #0C304A; color: white;
-      display: flex; align-items: center;
-      padding: 0 1rem;
-      font-size: 20px;
-      z-index: 1050;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    }
+  #adminPage .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    background: #0C304A; color: white;
+    display: flex; align-items: center;
+    padding: 0 1rem;
+    font-size: 20px;
+    z-index: 1050;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
 
-    .sidebar {
-      position: fixed;
-      top: 48px; bottom: 0; left: 0;
-      width: 250px;
-      background-color: #074a7f;
-      color: white;
-      overflow-y: auto;
-      padding-top: 1rem;
-      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .2);
-      z-index: 1000;
-    }
+  #adminPage .sidebar {
+    position: fixed;
+    top: 48px; bottom: 0; left: 0;
+    width: 250px;
+    background-color: #074a7f;
+    color: white;
+    overflow-y: auto;
+    padding-top: 1rem;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .2);
+    z-index: 1000;
+  }
 
-    .sidebar ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar li { margin-bottom: 0.3rem; }
+  #adminPage .sidebar ul { list-style: none; padding: 0; margin: 0; }
+  #adminPage .sidebar li { margin-bottom: 0.3rem; }
 
-    .Dropdown-Btn, .Account-Btn {
-      background-color: #0a3b68;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 18px;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
+  #adminPage .Dropdown-Btn,
+  #adminPage .Account-Btn {
+    background-color: #0a3b68;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
 
-    .Dropdown-Btn:hover, .Account-Btn:hover { background-color: #0d4c8a; }
-    .Dropdown-Btn.active, .Account-Btn.active { background-color: #1a73e8; }
+  #adminPage .Dropdown-Btn:hover,
+  #adminPage .Account-Btn:hover { background-color: #0d4c8a; }
 
-    .Dropdown-content, .Account-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      background-color: #145da0;
-      border-radius: 0 0 6px 6px;
-      margin-top: 0.3rem;
-      padding-left: 1rem;
-    }
+  #adminPage .Dropdown-Btn.active,
+  #adminPage .Account-Btn.active { background-color: #1a73e8; }
 
-    .Dropdown-content.show, .Account-content.show {
-      max-height: 300px;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-    }
+  #adminPage .Dropdown-content,
+  #adminPage .Account-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #145da0;
+    border-radius: 0 0 6px 6px;
+    margin-top: 0.3rem;
+    padding-left: 1rem;
+  }
 
-    .Dropdown-content a, .Account-content a {
-      color: #cde6ff;
-      padding: 8px 12px;
-      display: block;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 16px;
-      transition: background-color 0.2s;
-    }
+  #adminPage .Dropdown-content.show,
+  #adminPage .Account-content.show {
+    max-height: 300px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 
-    .Dropdown-content a:hover, .Account-content a:hover {
-      background-color: #1a73e8;
-      color: white;
-    }
+  #adminPage .Dropdown-content a,
+  #adminPage .Account-content a {
+    color: #cde6ff;
+    padding: 8px 12px;
+    display: block;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.2s;
+  }
 
-    main {
-      margin-left: 250px;
-      margin-top: 48px;
-      padding: 1rem;
-      min-height: calc(100vh - 48px);
-      background: #f4f7fa;
-      color: #333;
-    }
+  #adminPage .Dropdown-content a:hover,
+  #adminPage .Account-content a:hover {
+    background-color: #1a73e8;
+    color: white;
+  }
 
-    .clicked-animate {
-      animation: clickPulse 0.4s ease;
-      border-radius: 5px;
-    }
+  #adminPage main {
+    margin-left: 250px;
+    margin-top: 48px;
+    padding: 1rem;
+    min-height: calc(100vh - 48px);
+    background: #f4f7fa;
+    color: #333;
+  }
 
-    @keyframes clickPulse {
-      0% { background-color: #1a73e8; color: white; transform: scale(1); }
-      50% { background-color: #145da0; transform: scale(1.05); }
-      100% { background-color: #1a73e8; transform: scale(1); }
-    }
+  #adminPage .clicked-animate {
+    animation: clickPulse 0.4s ease;
+    border-radius: 5px;
+  }
 
-    .section-content {
-      display: none;
-    }
+  @keyframes clickPulse {
+    0% { background-color: #1a73e8; color: white; transform: scale(1); }
+    50% { background-color: #145da0; transform: scale(1.05); }
+    100% { background-color: #1a73e8; transform: scale(1); }
+  }
 
-    #contentContainer {
-      display: none;
-    }
+  #adminPage .section-content {
+    display: none;
+  }
 
-    .active-section {
-      display: block;
-    }
-        .logout-button {
-      background-color: #e53935;
-      color: white;
-      padding: 6px 12px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 14px;
-      transition: background-color 0.3s ease;
-    }
+  #adminPage #contentContainer {
+    display: none;
+  }
 
-    .logout-button:hover {
-      background-color: #c62828;
-    }
+    #adminPage #BundlecontentContainer {
+    display: none;
+  }
 
-  </style>
+  #adminPage .active-section {
+    display: block;
+  }
+
+  #adminPage .logout-button {
+    background-color: #e53935;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  #adminPage .logout-button:hover {
+    background-color: #c62828;
+  }
+</style>
+
 </head>
 
 <body>
+  <div id="adminPage">
 <nav class="navbar">
   <span>PC WORTH ADMIN DASHBOARD</span>
   <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
@@ -169,8 +184,8 @@ $role = $_SESSION['role'];
         <div class="Dropdown-content" id="Inventory_Dropdown">
           <a href="#" data-section="Products" data-file="InsertNewProduct/Forms.php">★ Products</a>
           <a href="#" data-section="Edit_Product_Information" data-file="UpdateProducts/Existing_Product_Table.php">Edit Product Information</a>
-          <a href="#" data-section="Prebuilds_section">Prebuilds</a>
-          <a href="#" data-section="Sales_section">Sales</a>
+          <a href="#" data-section="Prebuilds_section" data-file="Bundles/ExistingBundleTable.php">Prebuilds</a>
+
         </div>
       </li>
       <li>
@@ -186,7 +201,7 @@ $role = $_SESSION['role'];
 
   <main>
     <div id="contentContainer"></div>
-
+    <div id="BundlecontentContainer"></div>
     <div id="welcome-message">
       <h1>Welcome to PC Worth Admin Dashboard</h1>
       <p>This is the main content area.</p>
@@ -242,13 +257,27 @@ $role = $_SESSION['role'];
       }
     }
 
+        function goBackBundle() {
+      // Hide the form container
+      document.getElementById('BundlecontentContainer').style.display = 'none';
+      
+      // Show the product table again
+      showForms('Prebuilds_section', 'Bundles/ExistingBundleTable.php');
+      
+      // Highlight the sidebar link
+      const editLink = document.querySelector('[data-section="Prebuilds_section"]');
+      if (editLink) {
+        animateClick(editLink);
+      }
+    }
+
 function showForms(sectionId, fileToLoad = null) {
     // Hide all section divs and content container
     document.querySelectorAll('.section-content').forEach(div => {
         div.style.display = 'none';
     });
     document.getElementById('contentContainer').style.display = 'none';
-
+    document.getElementById('BundlecontentContainer').style.display = 'none';
     const target = document.getElementById(sectionId);
     if (target) {
         // Load content from file if specified
@@ -264,8 +293,13 @@ function showForms(sectionId, fileToLoad = null) {
                      if (sectionId === 'Manage_Account' && typeof initializeAccountInfoHandlers === 'function') {
                         initializeAccountInfoHandlers();
                     }
+
                     if (sectionId === 'Products' && typeof initProductFormValidation === 'function') {
                         initProductFormValidation();
+                    }
+
+                    if (sectionId === 'Prebuilds_section' && typeof initializeBundleStart === 'function') {
+                        initializeBundleStart();
                     }
                 })
                 .catch(() => {
@@ -299,6 +333,8 @@ function showForms(sectionId, fileToLoad = null) {
       // Initialize with welcome message
       document.getElementById('welcome-message').style.display = 'block';
     });
+
   </script>
+  </div>
 </body>
 </html>
