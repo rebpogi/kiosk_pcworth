@@ -25,7 +25,8 @@ $role = $_SESSION['role'];
   <script src="UpdateProducts/Update_Table.js"></script>
   <script src="UpdateProducts/productFormValidationTest.js"></script>
   <script src="AccountsManagement/account.js"></script>
-    <script src="Bundles/ExistingBundleTable.js"></script>
+  <script src="CreateNewAccount/SuperAdminCreateAccounts.js"></script>
+  <script src="Bundles/ExistingBundleTable.js"></script>
   <style>
   #adminPage body, 
   #adminPage html { margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; }
@@ -192,8 +193,10 @@ $role = $_SESSION['role'];
         <button class="Account-Btn" onclick="toggleDropdown(this)">Account Manager</button>
         <div class="Account-content" id="Account_Dropdown">
           <a href="#" data-section="Manage_Account" data-file="AccountsManagement/account.php">Account setting</a>
-          <a href="#" data-section="AccountCreation" data-file="CreateNewAccount/SuperAdminCreateAccounts.php">AccountCreation</a>
-          <a href="#" data-section="ViewAccounts" data-file="GroupAccountManagement/SuperAdmin-accounts.php">ViewAccounts</a>
+         <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'superadmin'): ?>
+            <a href="#" data-section="AccountCreation" data-file="CreateNewAccount/CreateAccountForm.php">AccountCreation</a>
+            <a href="#" data-section="ViewAccounts" data-file="GroupAccountManagement/SuperAdmin-accounts.php">ViewAccounts</a>
+          <?php endif; ?>
         </div>
       </li>
     </ul>
@@ -289,6 +292,33 @@ function showForms(sectionId, fileToLoad = null) {
                 .then(data => {
                     target.innerHTML = data;
                     
+                    // Dynamically load JS for Create Account form
+                    if (fileToLoad === 'CreateNewAccount/CreateAccountForm.php') {
+                        // Remove any previously loaded script
+                        const oldScript = document.getElementById('createAccountScript');
+                        if (oldScript) oldScript.remove();
+
+                        // Dynamically add the script
+                        const script = document.createElement('script');
+                        script.src = 'CreateNewAccount/SuperAdminCreateAccounts.js';
+                        script.id = 'createAccountScript';
+                        document.body.appendChild(script);
+                    }
+
+                          // Dynamically load JS for ViewAccounts (Edit/Delete)
+                        if (fileToLoad === 'GroupAccountManagement/SuperAdmin-accounts.php') {
+                          // Remove any previously loaded script
+                          const oldScript = document.getElementById('superAdminAccountsScript');
+                          if (oldScript) oldScript.remove();
+
+                          // Dynamically add the script
+                          const script = document.createElement('script');
+                          script.src = 'GroupAccountManagement/SuperAdmin-accounts.js';
+                          script.id = 'superAdminAccountsScript';
+                          document.body.appendChild(script);
+                    }
+                    
+
                     // Initialize specific functionality based on section
                      if (sectionId === 'Manage_Account' && typeof initializeAccountInfoHandlers === 'function') {
                         initializeAccountInfoHandlers();

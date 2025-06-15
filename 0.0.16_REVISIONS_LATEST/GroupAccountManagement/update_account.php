@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
+    $id = intval($_POST['id']);
     $firstname = trim($_POST['firstname']);
     $lastname = trim($_POST['lastname']);
     $username = trim($_POST['username']);
@@ -31,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Check if username exists
-    $stmt = $conn->prepare("SELECT id FROM admin_users WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    // Check if username exists for another user
+    $stmt = $conn->prepare("SELECT id FROM admin_users WHERE username = ? AND id != ?");
+    $stmt->bind_param("si", $username, $id);
     $stmt->execute();
     $stmt->store_result();
 
@@ -44,18 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Insert into DB
-    $insert = $conn->prepare("INSERT INTO admin_users (firstname, lastname, username, password, role) VALUES (?, ?, ?, ?, ?)");
-    $insert->bind_param("sssss", $firstname, $lastname, $username, $password, $role);
+    $stmt->close();
 
-    if ($insert->execute()) {
+    // Update DB
+    $update = $conn->prepare("UPDATE admin_users SET firstname = ?, lastname = ?, username = ?, password = ?, role = ? WHERE id = ?");
+    $update->bind_param("sssssi", $firstname, $lastname, $username, $password, $role, $id);
+
+    if ($update->execute()) {
         echo json_encode(['success' => true]);
     } else {
-        echo json_encode(['success' => false, 'error' => 'Error creating account: ' . $conn->error]);
+        echo json_encode(['success' => false, 'error' => 'Error updating account: ' . $conn->error]);
     }
 
-    $insert->close();
-    $stmt->close();
+    $update->close();
     $conn->close();
     exit;
 }
