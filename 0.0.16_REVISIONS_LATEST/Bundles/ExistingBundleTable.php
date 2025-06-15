@@ -68,9 +68,7 @@ $result = $conn->query($sql);
         <button class="btn-add" onclick="addNewBundle()">Add New Bundle</button>
     </div>
 
-  <div class="search-container">
-    <input type="search" id="searchBar" name="search" placeholder="Search by name..." onkeyup="filterTable()">
-  </div>
+<!-- <input type="search" id="searchBar" name="search" placeholder="Search by name..." onkeyup="filterTableB()"> -->
 
   <table id="bundleTable">
     <thead>
@@ -129,7 +127,7 @@ $result = $conn->query($sql);
 }
 
 #bundleTable th { 
-  background-color: #f4f4f4; 
+  background-color:rgb(154, 218, 255); 
 }
 
 .shown { 
@@ -183,3 +181,4 @@ $result = $conn->query($sql);
 }
 
 </style>
+<script src="ExistingBundleTable.js"></script>

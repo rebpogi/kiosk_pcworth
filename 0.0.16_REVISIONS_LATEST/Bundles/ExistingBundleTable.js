@@ -40,19 +40,24 @@ function showForms(sectionId, fileToLoad = null) {
   }
 }
 
-function filterTable() {
+document.addEventListener('DOMContentLoaded', function () {
+function filterTableB() {
   const input = document.getElementById('searchBar').value.toLowerCase();
-  const rows = document.querySelectorAll('#bundleTable tbody tr');
+  const rows = document.querySelectorAll('#productTable tbody tr');
 
   rows.forEach(row => {
-    const name = row.cells[0].textContent.toLowerCase();
-    if (name.includes(input)) {
+    const name = row.cells[0]?.textContent.toLowerCase() || '';
+    const category = row.cells[1]?.textContent.toLowerCase() || '';
+
+    if (name.includes(input) || category.includes(input)) {
       row.style.display = '';
     } else {
       row.style.display = 'none';
     }
   });
 }
+});
+
 
 function addNewBundle() {
   fetch('Bundles/Bundle_Forms.php') // No ID passed = New bundle form

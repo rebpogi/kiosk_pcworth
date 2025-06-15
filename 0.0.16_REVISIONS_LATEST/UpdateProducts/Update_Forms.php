@@ -42,9 +42,7 @@ if (!$product) {
 <body>
 
 <h1>Edit Product</h1>
-<button type="button" onclick="goBack()">← Back</button>
-
-
+<button type="button" class="my-custom-button" onclick="goBack()">← Back</button>
 
 <div id="formsContainer">
   <div id="AddProductForms" style="display: block;">

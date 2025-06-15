@@ -71,9 +71,9 @@
             </span>
           </td>
           <td>
-            <button onclick="editProduct(<?= $row['id'] ?>)">Edit</button>
-            <button onclick="toggleStatus(<?= $row['id'] ?>)">Toggle Visibility</button>
-            <button onclick="deleteProduct(<?= $row['id'] ?>)">Delete</button>
+            <button class="btn-edit" onclick="editProduct(<?= $row['id'] ?>)">Edit</button>
+            <button class="btn-toggle" onclick="toggleStatus(<?= $row['id'] ?>)">Toggle Visibility</button>
+            <button class="btn-delete"onclick="deleteProduct(<?= $row['id'] ?>)">Delete</button>
           </td>
         </tr>
         <?php endwhile; ?>
@@ -106,7 +106,7 @@
   }
 
   #productTable th { 
-    background-color: #f4f4f4; 
+    background-color:rgb(174, 236, 255); 
   }
 
   .shown { 
@@ -123,4 +123,34 @@
     padding: 6px 10px; 
     margin-right: 5px; 
   }
+
+  .btn-toggle {
+  background-color: #17a2b8;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-add {
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
   </style>

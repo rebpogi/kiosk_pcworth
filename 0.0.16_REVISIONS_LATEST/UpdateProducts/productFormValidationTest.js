@@ -160,6 +160,18 @@ function initUpdateProductFormValidation() {
     }
   }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBtn = document.getElementById('closeModal');
+  const modal = document.getElementById('popupModal');
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+});
+
+
   function updateFormFields(product) {
     // Update form fields with new data if needed
     if (product.image_url) {

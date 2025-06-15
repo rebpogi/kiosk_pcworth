@@ -129,7 +129,6 @@ function deleteProduct(id) {
   });
 }
 
-
 function loadSweetAlert() {
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
