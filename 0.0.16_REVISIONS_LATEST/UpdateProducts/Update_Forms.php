@@ -42,7 +42,7 @@ if (!$product) {
 <body>
 
 <h1>Edit Product</h1>
-<button type="button" class="my-custom-button" onclick="goBack()">← Back</button>
+
 
 <div id="formsContainer">
   <div id="AddProductForms" style="display: block;">
@@ -50,6 +50,8 @@ if (!$product) {
     <div class="form-wrapper"> 
       <form id="UpdateProductForm" action="/phpscripts/0.0.16_REVISIONS_LATEST/UpdateProducts/update_product.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="ID" value="<?= $productId ?>">
+
+    <button type="button" class="btn btn-back" onclick="goBack()">← Back</button>
 
         <div class="input-group">
           <div class="input-field">

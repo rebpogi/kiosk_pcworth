@@ -52,7 +52,7 @@
     <table id="productTable">
       <thead>
         <tr>
-          <th>Name</th>
+         <th class="name-header">Name</th>
           <th>Category</th>
           <th>Quantity</th>
           <th>Status</th>
@@ -98,16 +98,35 @@
   #productTable { 
     width: 100%; 
     border-collapse: collapse; 
+      border: 2px solid black; /* Thicker cell borders */
   }
 
   #productTable th, #productTable td { 
     border: 1px solid #ccc; 
     padding: 10px; 
+      border: 2px solid black; /* Thicker cell borders */
   }
 
+.name-header {
+  color: black;
+  font-weight: 800;           /* thicker text */
+  font-size: 18px;            /* bigger text */
+  text-transform: uppercase;
+  font-family: 'Georgia', serif; /* different text style (elegant serif) */
+  letter-spacing: 1px;        /* optional: spacing between letters */
+}
+
   #productTable th { 
-    background-color:rgb(174, 236, 255); 
+    background-color:rgb(92, 217, 255); 
   }
+  
+    table tr:nth-child(odd) {
+      background-color:rgb(186, 242, 255); /* light gray-white */
+    }
+
+    table tr:nth-child(even) {
+      background-color: #eef5fb; /* soft light blue */
+    }
 
   .shown { 
     color: green; 

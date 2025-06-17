@@ -107,6 +107,7 @@ function initProductFormValidation() {
         insertData();
         clearAllErrors();
         clearProductForm();
+          clearAllErrors();
       }
     }
   });
@@ -355,6 +356,7 @@ function insertData() {
       message.textContent = data.message || 'Product saved successfully!';
       showSuccessModal();
       clearProductForm();
+      clearAllErrors();
     } else {
       // Handle specific field errors from server
       if (data.errors) {

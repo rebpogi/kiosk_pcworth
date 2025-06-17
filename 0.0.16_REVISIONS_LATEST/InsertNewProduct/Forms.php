@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Product</title>
   
-  <link rel="stylesheet" href="InsertNewProduct/NewProductForm.css">
+  <link rel="stylesheet" href="NewProductForm.css">
   <!-- <script src="FormsCategoryConditions.js" defer ></script> -->
 
   <style>

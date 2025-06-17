@@ -183,9 +183,9 @@ $role = $_SESSION['role'];
       <li>
         <button class="Dropdown-Btn" onclick="toggleDropdown(this)">Inventory</button>
         <div class="Dropdown-content" id="Inventory_Dropdown">
-          <a href="#" data-section="Products" data-file="InsertNewProduct/Forms.php">★ Products</a>
+          <a href="#" data-section="Products" data-file="InsertNewProduct/Forms.php" >★ Products</a>
           <a href="#" data-section="Edit_Product_Information" data-file="UpdateProducts/Existing_Product_Table.php">Edit Product Information</a>
-          <a href="#" data-section="Prebuilds_section" data-file="Bundles/ExistingBundleTable.php">Prebuilds</a>
+          <!-- <a href="#" data-section="Prebuilds_section" data-file="Bundles/ExistingBundleTable.php">Prebuilds</a> -->
 
         </div>
       </li>
