@@ -1,0 +1,98 @@
+#admin-users-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#admin-users-page th, 
+#admin-users-page td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#admin-users-page th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#admin-users-page tr:hover {
+    background-color: #f5f5f5;
+}
+
+#admin-users-page .action-btn {
+    padding: 6px 12px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#admin-users-page .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#admin-users-page .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* EDIT FORM STYLES TO MATCH THE TABLE LOOK */
+#edit-form-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 6px;
+    max-width: 600px;
+}
+
+#edit-form-container form {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 10px 15px;
+    align-items: center;
+}
+
+#edit-form-container label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#edit-form-container input,
+#edit-form-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#edit-form-container .form-row {
+    display: contents; /* To allow grid to handle layout */
+}
+
+#edit-form-container .error-message {
+    grid-column: 2;
+    color: red;
+    font-size: 0.85em;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+#edit-form-container button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#edit-form-container button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#edit-form-container button#cancel-edit {
+    background-color: #6c757d;
+    color: white;
+}
